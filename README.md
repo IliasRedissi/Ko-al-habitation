@@ -1,4 +1,5 @@
 # Ko\<al\>habitation
 
 lien wireframe:
-https://wireframe.cc/5VUoQH
+* client : https://wireframe.cc/5VUoQH
+* admin : https://wireframe.cc/Whv0kq
