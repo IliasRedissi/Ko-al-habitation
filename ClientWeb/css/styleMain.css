@@ -1,0 +1,22 @@
+﻿body {
+}
+
+table{
+    margin: 5px;
+}
+
+.margin_left{
+    margin-left: 10px;
+}
+.margin_top_left{
+    margin-top: 5px !important;
+    margin-left: 10px !important;
+}
+/*.to_the_right{
+    right: 10px;
+    position: relative;
+}*/
+
+.margin_top{
+    margin-top: 5px !important;
+}

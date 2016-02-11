@@ -4,10 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <link rel="stylesheet" href="./css/styleMain.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-purple.min.css" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-deep_purple.min.css" />
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -15,37 +16,38 @@
 </head>
 <body>
     <div class="mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--waterfall">
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Ko&lt;al&gt;habitation</span>
-          <div class="mdl-layout-spacer"></div>
+        <header class="mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Ko&lt;al&gt;habitation</span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <div class="mdl-layout__header-row mdl-color--primary-dark">
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="#">Link</a>
+                    <a class="mdl-navigation__link" href="#">Link</a>
+                    <a class="mdl-navigation__link" href="#">Link</a>
+                    <a class="mdl-navigation__link" href="#">Link</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Ko&lt;al&gt;habitation</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="#">Link</a>
+                <a class="mdl-navigation__link" href="#">Link</a>
+                <a class="mdl-navigation__link" href="#">Link</a>
+                <a class="mdl-navigation__link" href="#">Link</a>
+            </nav>
         </div>
-        <div class="mdl-layout__header-row mdl-color--primary-dark">
-          <div class="mdl-layout-spacer"></div>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-          </nav>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Ko&lt;al&gt;habitation</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
-      <main class="mdl-layout__content">
-        <div class="page-content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-      
-            </asp:ContentPlaceHolder>
-        </div>
-      </main>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <form id ="form1" runat="server">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+            </div>
+        </main>
     </div>
 </body>
 </html>

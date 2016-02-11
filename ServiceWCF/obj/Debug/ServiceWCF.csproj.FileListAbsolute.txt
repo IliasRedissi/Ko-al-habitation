@@ -13,3 +13,18 @@ C:\Tmp\AgenceImmobiliere\ServiceWCF\obj\Debug\ServiceWCF.csprojResolveAssemblyRe
 C:\Tmp\AgenceImmobiliere\ServiceWCF\obj\Debug\ServiceWCF.dll
 C:\Tmp\AgenceImmobiliere\ServiceWCF\obj\Debug\ServiceWCF.pdb
 C:\Tmp\AgenceImmobiliere\ServiceWCF\bin\SQL\agence.db
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\SQL\agence.db
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\ServiceWCF.dll.config
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\ServiceWCF.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\ServiceWCF.pdb
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\EntityFramework.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\EntityFramework.SqlServer.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\System.Data.SQLite.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\System.Data.SQLite.EF6.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\System.Data.SQLite.Linq.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\EntityFramework.xml
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\EntityFramework.SqlServer.xml
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\bin\System.Data.SQLite.xml
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\obj\Debug\ServiceWCF.csprojResolveAssemblyReference.cache
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\obj\Debug\ServiceWCF.dll
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ServiceWCF\obj\Debug\ServiceWCF.pdb

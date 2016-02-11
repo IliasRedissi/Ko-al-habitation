@@ -68,6 +68,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.aspx" />
+    <Content Include="css\styleMain.css" />
     <Content Include="packages.config" />
     <Content Include="General.Master" />
     <None Include="Service References\ServiceAgence\Agence.wsdl" />
@@ -81,6 +83,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <None Include="Service References\ServiceAgence\Agence.disco" />
+    <Content Include="res\koalaIsLife.jpg" />
     <Content Include="Service References\ServiceAgence\ClientWeb.ServiceAgence.ResultatBienImmobilier.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -111,6 +114,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
