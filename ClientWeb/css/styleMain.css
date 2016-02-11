@@ -5,6 +5,10 @@ table{
     margin: 5px;
 }
 
+#img_title{
+    border-radius: 50%;
+}
+
 .margin_left{
     margin-left: 10px;
 }
