@@ -6,7 +6,7 @@
         <asp:Repeater ID="rpResultats" runat="server"> 
             <ItemTemplate> 
                 <div class="card-square mdl-card mdl-shadow--2dp"> 
-                  <div class="mdl-card__title mdl-card--expand" style="background: url('<%#(String)Eval("PhotoPrincipaleBase64") != "" && Eval("PhotoPrincipaleBase64") != null ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg"%>'); background-size: cover; color: #fff;"> 
+                  <div class="mdl-card__title mdl-card--expand" style="background: url('<%#(string)Eval("PhotoPrincipaleBase64") != "" && Eval("PhotoPrincipaleBase64") != null ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg"%>'); -ms-background-size: cover; background-size: cover; color: #fff;"> 
                     
                   </div>
                   <div class="mdl-card__title">
