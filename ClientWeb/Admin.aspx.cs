@@ -13,7 +13,7 @@ namespace ClientWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             List<ServiceAgence.BienImmobilierBase> liste = null;
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
