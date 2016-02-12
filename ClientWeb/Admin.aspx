@@ -28,10 +28,19 @@
                 <asp:TemplateField>
                     <HeaderTemplate>Image</HeaderTemplate>
                     <ItemTemplate>
-                        <img height="200" width="250" src="<%#(String)Eval("PhotoPrincipaleBase64") != "" ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg"%>" />
+                        <img height="200" width="200" src="<%#(String)Eval("PhotoPrincipaleBase64") != "" ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/koalaIsLife.jpg"%>" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>
 </asp:Content>
+
+<%-- <img src=" <%# data:img/png;base64," + imagebaseDonnée%>" /> --%>
+<%--<itemtemplate>
+                        <img src=" <%# data:img/png;base64," + imagebaseDonnée%>" />
+                        <asp:ImageButton ID="btnModifier" runat="server"
+                            CommandArgument='<%#Eval("Id")%>'
+                            CommandName="Modifier"
+                            ImageUrl="<%# "data:img/png;base64," + Eval("PhotoPrincipaleBase64")%>" Width="50" Height="50" />
+                    </itemtemplate>--%>

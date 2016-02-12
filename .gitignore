@@ -1,4 +1,4 @@
-﻿###################
+###################
 # compiled source #
 ###################
 *.com
@@ -58,6 +58,3 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 .vs/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
