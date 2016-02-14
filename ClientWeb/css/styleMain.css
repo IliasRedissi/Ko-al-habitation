@@ -43,8 +43,11 @@ table{
   height: 300px;
 }
 
-.grid-container {
+.container {
     margin: auto;
+}
+
+.grid-container {
     max-width: 1200px;
     display: flex;
     flex-direction: row;
