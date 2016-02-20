@@ -4,34 +4,41 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="content">
-        <div class="margin_top_left to_the_right">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <div id="btnEdit">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CreateImmobilier.aspx" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                 Create
-            </button>
+            </asp:HyperLink>
             <button class=" mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                 Delete
             </button>
         </div>
         <asp:Label ID="lblErreurs" runat="server" Text=""></asp:Label>
-        <asp:GridView ID="gvResultats" runat="server" AutoGenerateColumns="false" CssClass="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-            <Columns>
-                <asp:BoundField DataField="Titre" ReadOnly="True"
-                    SortExpression="Titre" HeaderText="Titre">
-                    <ItemStyle CssClass="mdl-data-table__cell--non-numeric" />
-                </asp:BoundField>
-                <asp:BoundField DataField="TypeBien" ReadOnly="True"
-                    SortExpression="TypeBien" HeaderText="TypeBien">
-                    <ItemStyle CssClass="mdl-data-table__cell--non-numeric" />
-                </asp:BoundField>
-                <asp:BoundField DataField="Prix" ReadOnly="True"
-                    SortExpression="Prix" HeaderText="Prix" />
-                <asp:TemplateField>
-                    <HeaderTemplate>Image</HeaderTemplate>
+
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Titre</th>
+                    <th>TypeBien</th>
+                    <th>Prix</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="rpResultats" runat="server">
                     <ItemTemplate>
-                        <img height="200" width="250" src="<%#(String)Eval("PhotoPrincipaleBase64") != "" ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg"%>" />
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric"><%# Eval("Titre")%> :</td>
+                            <td><%# Eval("TypeBien")%></td>
+                            <td><%# Eval("Prix")%></td>
+                            <td>
+                                <img height="200" width="250" src="<%#(String)Eval("PhotoPrincipaleBase64") != "" ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg"%>" />
+                            </td>
+                        </tr>
                     </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
+                    <SeparatorTemplate>
+                    </SeparatorTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
     </div>
 </asp:Content>

@@ -1,0 +1,43 @@
+﻿body {
+}
+
+select {
+    padding: 5px;
+    border: none;
+    color: white;
+}
+option:hover {
+    background-color: rgb(69, 90, 100);
+}
+
+#content_create{
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+.block{
+    display: block;
+}
+
+#content_create:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+#content_create_in{
+    width: 50%;
+    position: relative;
+}
+.boutton{
+    right: 5px;
+    position: absolute;
+}
+.margin_auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.width_inherit{
+    width:inherit;
+}

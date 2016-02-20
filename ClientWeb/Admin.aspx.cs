@@ -8,15 +8,17 @@ using ClientWeb.ServiceAgence;
 
 namespace ClientWeb
 {
+
     public partial class Admin : System.Web.UI.Page
     {
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             List<ServiceAgence.BienImmobilierBase> liste = null;
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
+                /*
                 ServiceAgence.CriteresRechercheBiensImmobiliers criteres = new ServiceAgence.CriteresRechercheBiensImmobiliers();
                 criteres.DateMiseEnTransaction1 = null;
                 criteres.DateMiseEnTransaction2 = null;
@@ -40,6 +42,8 @@ namespace ClientWeb
                 criteres.TypeChauffage = null;
                 criteres.TypeTransaction = null;
                 ServiceAgence.ResultatListeBiensImmobiliers resultat = client.LireListeBiensImmobiliers(criteres, null, null);
+                */
+                ServiceAgence.ResultatListeBiensImmobiliers resultat = client.LireListeBiensImmobiliers(null, null, null);
 
                 if (resultat.SuccesExecution)
                 {
@@ -51,12 +55,10 @@ namespace ClientWeb
                     this.lblErreurs.Text = resultat.ErreursBloquantes.ToString();
                 }
             }
+            liste.Add(new BienImmobilierBase());
 
-            this.gvResultats.DataSource = liste;
-            this.gvResultats.DataBind();
-
-            this.gvResultats.DataSource = liste;
-            this.gvResultats.DataBind();
+            this.rpResultats.DataSource = liste;
+            this.rpResultats.DataBind();
         }
     }
 }

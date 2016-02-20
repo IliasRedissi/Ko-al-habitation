@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
+    <Content Include="CreateImmobilier.aspx" />
+    <Content Include="css\StyleCreateimmobilier.css" />
     <Content Include="css\styleMain.css" />
     <Content Include="packages.config" />
     <Content Include="General.Master" />
@@ -121,6 +123,13 @@
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateImmobilier.aspx.cs">
+      <DependentUpon>CreateImmobilier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateImmobilier.aspx.designer.cs">
+      <DependentUpon>CreateImmobilier.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

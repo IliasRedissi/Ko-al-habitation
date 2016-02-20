@@ -8,7 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="./css/styleMain.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-deep_purple.min.css" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-indigo.min.css" />
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -19,7 +19,7 @@
         <header class="mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">
-                    <img id="img_title" height="50" width="50" src="./res/koalaIsLife.jpg"/>
+                    <img id="img_title" class="color" height="50" width="50" src="./res/koalaIsLife.jpg"/>
                     Ko&lt;al&gt;habitation
                 </span>
                 <div class="mdl-layout-spacer"></div>
@@ -45,7 +45,7 @@
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
-                <form id ="form1" runat="server">
+                <form id ="form1" runat="server" method="post">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </form>
