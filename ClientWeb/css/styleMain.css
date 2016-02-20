@@ -75,3 +75,23 @@ body {
 .margin_top{
     margin-top: 5px !important;
 }
+
+.card-square{
+  width: 300px;
+  height: 300px;
+}
+
+.grid-container {
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.grid-container > * {
+    margin: 5px;
+    max-width: 300px;
+}
