@@ -154,6 +154,27 @@ namespace ClientWeb
             rptPaging.DataBind();
         }
 
+        protected void lbFirst_Click(object sender, EventArgs e)
+        {
+            CurrentPage = 0;
+            BindDataIntoRepeater();
+        }
+        protected void lbLast_Click(object sender, EventArgs e)
+        {
+            CurrentPage = (Convert.ToInt32(ViewState["TotalPages"]) - 1);
+            BindDataIntoRepeater();
+        }
+        protected void lbPrevious_Click(object sender, EventArgs e)
+        {
+            CurrentPage -= 1;
+            BindDataIntoRepeater();
+        }
+        protected void lbNext_Click(object sender, EventArgs e)
+        {
+            CurrentPage += 1;
+            BindDataIntoRepeater();
+        }
+
         protected void rptPaging_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (!e.CommandName.Equals("newPage")) return;

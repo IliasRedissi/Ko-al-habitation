@@ -23,8 +23,8 @@
             </asp:Repeater>
         </div>
         <div class="grid-container pagination">
-            <asp:Button runat="server" ID="FirstPage" Text="<< First" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
-            <asp:Button runat="server" ID="PrevPage" Text="< Prev" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+            <asp:Button runat="server" ID="FirstPage" Text="<< First" OnClick="lbFirst_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+            <asp:Button runat="server" ID="PrevPage" Text="< Prev" OnClick="lbPrevious_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
     
             <asp:Repeater ID="rptPaging" OnItemCommand="rptPaging_ItemCommand" OnItemDataBound="rptPaging_ItemDataBound" runat="server">
                 <ItemTemplate>
@@ -32,8 +32,8 @@
                 </ItemTemplate>
             </asp:Repeater>
 
-            <asp:Button runat="server" ID="NextPage" Text="Next >" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
-            <asp:Button runat="server" ID="LastPage" Text="Last >>" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+            <asp:Button runat="server" ID="NextPage" Text="Next >" OnClick="lbNext_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+            <asp:Button runat="server" ID="LastPage" Text="Last >>" OnClick="lbLast_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
         </div>
     </div>
     
