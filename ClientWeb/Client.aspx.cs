@@ -165,8 +165,8 @@ namespace ClientWeb
         {
             var lnkPage = (Button)e.Item.FindControl("lbPaging");
             if (lnkPage.CommandArgument != CurrentPage.ToString()) return;
-            lnkPage.Enabled = false;
-            lnkPage.CssClass += " mdl-color-text--accent";
+            //lnkPage.Enabled = false;
+            lnkPage.CssClass = "mdl-button mdl-js-button mdl-button--raised mdl-button--accent";
             //lnkPage.BackColor = Color.FromName("#00FF00");
         }
     }

@@ -22,13 +22,13 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-        <div class="grid-container">
+        <div class="grid-container pagination">
             <asp:Button runat="server" ID="FirstPage" Text="<< First" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
             <asp:Button runat="server" ID="PrevPage" Text="< Prev" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
     
             <asp:Repeater ID="rptPaging" OnItemCommand="rptPaging_ItemCommand" OnItemDataBound="rptPaging_ItemDataBound" runat="server">
                 <ItemTemplate>
-                    <asp:Button ID="lbPaging" CssClass="mdl-button mdl-js-button mdl-button--icon mdl-button--primary" runat="server" CommandArgument='<%# Eval("PageIndex") %>' CommandName="newPage" Text='<%# Eval("PageText") %> ' Width="20px"/>
+                    <asp:Button ID="lbPaging" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" runat="server" CommandArgument='<%# Eval("PageIndex") %>' CommandName="newPage" Text='<%# Eval("PageText") %> ' Width="20px"/>
                 </ItemTemplate>
             </asp:Repeater>
 

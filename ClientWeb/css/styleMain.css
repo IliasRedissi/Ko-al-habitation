@@ -54,9 +54,25 @@ table{
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+    margin: auto;
 }
 
 .grid-container > * {
     margin: 5px;
     max-width: 300px;
+}
+
+.pagination .mdl-button {
+    -moz-min-width: 40px;
+    -ms-min-width: 40px;
+    -o-min-width: 40px;
+    -webkit-min-width: 40px;
+    min-width: 40px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.pagination {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
