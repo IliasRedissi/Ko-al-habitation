@@ -50,7 +50,9 @@
             <div class="content mdl-grid mdl-grid--no-spacing">
                 <div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
                     <aside class="mdl-components__nav docs-text-styling mdl-shadow--4dp" id="search-container">
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolderSearch" runat="server"/>
+                        <form id="search">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolderSearch" runat="server"/>
+                        </form>
                     </aside>
                     <main class="mdl-components__pages">
                         <form id ="form1" runat="server">

@@ -5,50 +5,62 @@
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolderSearch">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="name">
+        <input class="mdl-textfield__input" type="text" id="name" name="name">
         <label class="mdl-textfield__label" for="name">Nom</label>
     </div>
     <div id="insert-here"></div>
 
 <script>
-var onSelect = function(){
-  this.button.innerHTML = this.innerHTML;
-}
+    var onSelect = function () {
+        this.button.innerHTML = this.innerHTML;
+    }
 
-var insertPoint = 'insert-here';
-var numberOfDropdowns = 0;
-function makeDropdown(name, options){
-  // create the button
-    var button = document.createElement('BUTTON');
-  button.id = numberOfDropdowns; // this is how Material Design associates option/button
-  button.setAttribute('class', 'mdl-button mdl-js-button dropdown');
-  button.innerHTML = name;
-  document.getElementById(insertPoint).appendChild(button);
+    var insertPoint = 'insert-here';
+    var numberOfDropdowns = 0;
+    function makeDropdown(name, options){
+        // create the button
+        var button = document.createElement('LABEL');
+        button.id = numberOfDropdowns; // this is how Material Design associates option/button
+        button.setAttribute('class', 'dropdown');
+        button.innerHTML = name;
+        document.getElementById(insertPoint).appendChild(button);
 
-  // add the options to the button (unordered list)
-  var ul = document.createElement('UL');
-  ul.setAttribute('class', 'mdl-menu mdl-js-menu mdl-js-ripple-effect');
-  ul.setAttribute('for', numberOfDropdowns); // associate button
-  for(var index in options) {
-    // add each item to the list
-    var li = document.createElement('LI');
-      li.setAttribute('class', 'mdl-menu__item');
-      li.innerHTML = options[index];
-      li.button = button;
-      li.onclick = onSelect;
-      ul.appendChild(li);
-  }
-  document.getElementById(insertPoint).appendChild(ul);
-  // and finally add the list to the HTML
-  numberOfDropdowns++;
-}
+        // add the options to the button (unordered list)
+        var ul = document.createElement('UL');
+        ul.setAttribute('class', 'mdl-menu mdl-js-menu');
+        ul.setAttribute('for', numberOfDropdowns); // associate button
+        for(var index in options) {
+            // add each item to the list
+            var li = document.createElement('LI');
+            li.setAttribute('class', 'mdl-menu__item');
+            li.innerHTML = options[index];
+            li.button = button;
+            li.onclick = onSelect;
+            ul.appendChild(li);
+        }
+        document.getElementById(insertPoint).appendChild(ul);
+        // and finally add the list to the HTML
+        numberOfDropdowns++;
+    }
 
-var optionsA = ["Achat", "Location"];
-makeDropdown("Type de transactions", optionsA);
+    var optionsA = ["Achat", "Location"];
+    makeDropdown("Type de transactions", optionsA);
+    var optionsB = ["Appartement", "Maison", "Garage", "Terrain"];
+    makeDropdown("Type de biens", optionsB);
+    var optionsC = ["Aucun", "Individuel", "Collectif"];
+    makeDropdown("Type de chauffage", optionsC);
+    var optionsD = ["Aucun", "Fioul", "Gaz", "Electrique", "Bois"];
+    makeDropdown("Energie de chaufage", optionsD);
 </script>
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored  mdl-js-ripple-effect" id="search-button">
       <i class="material-icons">search</i>
     </button>
+    <script type="text/javascript">
+        $('#search-button').onclick = function() {
+            $('#search').onsubmit();
+        }
+        
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

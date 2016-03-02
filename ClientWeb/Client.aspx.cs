@@ -67,7 +67,7 @@ namespace ClientWeb
                     TypeBien = null,
                     TypeChauffage = null,
                     TypeTransaction = null,
-                    TitreContient = null
+                    TitreContient = Request.QueryString.Get("name"),
                 };
                 var resultat = client.LireListeBiensImmobiliers(criteres, CurrentPage, NbBiens);
 
@@ -78,26 +78,6 @@ namespace ClientWeb
         private void BindDataIntoRepeater()
         {
             var liste = GetListFromDb();
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
-            liste.List.Add(new BienImmobilierBase());
             _pgsource.DataSource = liste.List;
             _pgsource.AllowPaging = true;
             // Number of items to be displayed in the Repeater

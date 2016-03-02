@@ -108,10 +108,17 @@ table{
     color: #ffffff !important;
     color: rgba(255,255,255,0.52) !important;
     width: 100% !important;
+    font-size: 16px;
+    margin-top: 5px;
 }
 
 #search-button {
     position: fixed;
     bottom: 25px;
     left: calc(200px - 20px);
+}
+
+#insert-here {
+    display: flex;
+    flex-direction: column;
 }
