@@ -90,6 +90,10 @@ table{
     background-color: #37474F !important;
 }
 
+#search-container {
+    position: relative;
+}
+
 #search-container input {
     border-bottom-color: #ffffff;
     border-bottom-color: rgba(255, 255, 255, 0.117647);
@@ -113,7 +117,7 @@ table{
 }
 
 #search-button {
-    position: fixed;
+    position: absolute;
     bottom: 25px;
     left: calc(200px - 20px);
 }
