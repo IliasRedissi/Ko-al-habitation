@@ -66,7 +66,8 @@ namespace ClientWeb
                     TransactionEffectuee = null,
                     TypeBien = null,
                     TypeChauffage = null,
-                    TypeTransaction = null
+                    TypeTransaction = null,
+                    TitreContient = null
                 };
                 var resultat = client.LireListeBiensImmobiliers(criteres, CurrentPage, NbBiens);
 

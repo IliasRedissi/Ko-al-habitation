@@ -1,4 +1,4 @@
-﻿body {
+﻿main {
     background-color: rgb(51,51,51);
 }
 
@@ -9,11 +9,6 @@ table{
 #img_title{
     border-radius: 50%;
     margin-right: 5px;
-}
-#form1{
-    padding-top: 50px;
-    padding-left: 10px;
-    
 }
 
 .margin_left{
@@ -55,6 +50,7 @@ table{
     justify-content: center;
     align-content: center;
     margin: auto;
+    padding-top: 50px;
 }
 
 .grid-container > * {
@@ -75,4 +71,47 @@ table{
 .pagination {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.mdl-card__actions {
+    display: flex;
+}
+
+.mdl-card__actions > .price {
+    vertical-align: middle;
+    line-height: 36px;
+}
+
+#search-container {
+    padding: 15px;
+}
+
+.mdl-components__nav {
+    background-color: #37474F !important;
+}
+
+#search-container input {
+    border-bottom-color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.117647);
+    color: #ffffff;
+    width: 90%;
+}
+
+#search-container label {
+    color: #ffffff;
+    color: rgba(255,255,255,0.52);
+    width: 90%;
+}
+
+.dropdown {
+    height: initial !important;
+    color: #ffffff !important;
+    color: rgba(255,255,255,0.52) !important;
+    width: 100% !important;
+}
+
+#search-button {
+    position: fixed;
+    bottom: 25px;
+    left: calc(200px - 20px);
 }
