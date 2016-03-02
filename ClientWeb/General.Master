@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="./css/styleMain.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-deep_purple.min.css" />
+    <link rel="stylesheet" href="./css/components.css"/>
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div class="mdl-layout mdl-js-layout">
+    <div class="mdl-layout__container">
+        <div class="mdl-layout mdl-js-layout">
         <header class="mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">
@@ -44,13 +47,32 @@
             </nav>
         </div>
         <main class="mdl-layout__content">
-            <div class="page-content">
-                <form id ="form1" runat="server">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </form>
+            <div class="content mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
+                    <aside class="mdl-components__nav docs-text-styling mdl-shadow--4dp" id="search-container">
+                        <form id="search">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolderSearch" runat="server"/>
+                        </form>
+                    </aside>
+                    <main class="mdl-components__pages">
+                        <form id ="form1" runat="server">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </form>
+                    </main>
+                </div>
             </div>
+            <footer class="mdl-mini-footer">
+              <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">Title</div>
+                <ul class="mdl-mini-footer__link-list">
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+              </div>
+            </footer>
         </main>
+    </div>
     </div>
 </body>
 </html>
