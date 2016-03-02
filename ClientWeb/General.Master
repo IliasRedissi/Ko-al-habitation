@@ -8,8 +8,12 @@
     <title></title>
     <link rel="stylesheet" href="./css/styleMain.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-deep_purple.min.css" />
     <link rel="stylesheet" href="./css/components.css"/>
+=======
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.blue_grey-indigo.min.css" />
+>>>>>>> develop
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -22,7 +26,7 @@
         <header class="mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title">
-                    <img id="img_title" height="50" width="50" src="./res/koalaIsLife.jpg"/>
+                    <img id="img_title" class="color" height="50" width="50" src="./res/koalaIsLife.jpg"/>
                     Ko&lt;al&gt;habitation
                 </span>
                 <div class="mdl-layout-spacer"></div>
@@ -47,6 +51,7 @@
             </nav>
         </div>
         <main class="mdl-layout__content">
+<<<<<<< HEAD
             <div class="content mdl-grid mdl-grid--no-spacing">
                 <div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
                     <aside class="mdl-components__nav docs-text-styling mdl-shadow--4dp" id="search-container">
@@ -61,6 +66,13 @@
                         </form>
                     </main>
                 </div>
+=======
+            <div class="page-content">
+                <form id ="form1" runat="server" method="post">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </form>
+>>>>>>> develop
             </div>
             <footer class="mdl-mini-footer">
               <div class="mdl-mini-footer__left-section">

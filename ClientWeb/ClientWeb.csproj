@@ -69,8 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
+<<<<<<< HEAD
     <Content Include="Client.aspx" />
     <Content Include="css\components.css" />
+=======
+    <Content Include="CreateImmobilier.aspx" />
+    <Content Include="css\StyleCreateimmobilier.css" />
+>>>>>>> develop
     <Content Include="css\styleMain.css" />
     <Content Include="js\mdl-select.js" />
     <Content Include="packages.config" />
@@ -87,6 +92,7 @@
     <Content Include="Default.aspx" />
     <None Include="Service References\ServiceAgence\Agence.disco" />
     <Content Include="res\koalaIsLife.jpg" />
+    <Content Include="res\noImage.jpg" />
     <Content Include="Service References\ServiceAgence\ClientWeb.ServiceAgence.ResultatBienImmobilier.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -124,12 +130,12 @@
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Client.aspx.cs">
-      <DependentUpon>Client.aspx</DependentUpon>
+    <Compile Include="CreateImmobilier.aspx.cs">
+      <DependentUpon>CreateImmobilier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Client.aspx.designer.cs">
-      <DependentUpon>Client.aspx</DependentUpon>
+    <Compile Include="CreateImmobilier.aspx.designer.cs">
+      <DependentUpon>CreateImmobilier.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
