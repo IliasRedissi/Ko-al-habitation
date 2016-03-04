@@ -66,7 +66,7 @@ namespace ClientWeb
                     TransactionEffectuee = null,
                     TypeBien = null,
                     TypeChauffage = null,
-                    TypeTransaction = null,
+                    TypeTransaction = (BienImmobilierBase.eTypeTransaction?) (Request.QueryString.Get("transaction") == "1" ? BienImmobilierBase.eTypeTransaction.Vente : Request.QueryString.Get("transaction") == "2" ? BienImmobilierBase.eTypeTransaction.Location :  (object) DBNull.Value),
                     TitreContient = Request.QueryString.Get("name"),
                 };
                 var resultat = client.LireListeBiensImmobiliers(criteres, CurrentPage, NbBiens);

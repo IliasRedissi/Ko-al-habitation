@@ -8,50 +8,46 @@
         <input class="mdl-textfield__input" type="text" id="name" name="name">
         <label class="mdl-textfield__label" for="name">Nom</label>
     </div>
-    <div id="insert-here"></div>
-
-<script>
-    var onSelect = function () {
-        this.button.innerHTML = this.innerHTML;
-    }
-
-    var insertPoint = 'insert-here';
-    var numberOfDropdowns = 0;
-    function makeDropdown(name, options){
-        // create the button
-        var button = document.createElement('LABEL');
-        button.id = numberOfDropdowns; // this is how Material Design associates option/button
-        button.setAttribute('class', 'dropdown');
-        button.innerHTML = name;
-        document.getElementById(insertPoint).appendChild(button);
-
-        // add the options to the button (unordered list)
-        var ul = document.createElement('UL');
-        ul.setAttribute('class', 'mdl-menu mdl-js-menu');
-        ul.setAttribute('for', numberOfDropdowns); // associate button
-        for(var index in options) {
-            // add each item to the list
-            var li = document.createElement('LI');
-            li.setAttribute('class', 'mdl-menu__item');
-            li.innerHTML = options[index];
-            li.button = button;
-            li.onclick = onSelect;
-            ul.appendChild(li);
-        }
-        document.getElementById(insertPoint).appendChild(ul);
-        // and finally add the list to the HTML
-        numberOfDropdowns++;
-    }
-
-    var optionsA = ["Achat", "Location"];
-    makeDropdown("Type de transactions", optionsA);
-    var optionsB = ["Appartement", "Maison", "Garage", "Terrain"];
-    makeDropdown("Type de biens", optionsB);
-    var optionsC = ["Aucun", "Individuel", "Collectif"];
-    makeDropdown("Type de chauffage", optionsC);
-    var optionsD = ["Aucun", "Fioul", "Gaz", "Electrique", "Bois"];
-    makeDropdown("Energie de chaufage", optionsD);
-</script>
+    <label>Type de transactions</label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="achat">
+      <input type="radio" id="achat" class="mdl-radio__button" name="transaction" value="1">
+      <span class="mdl-radio__label">Achat</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="location">
+        <input type="radio" id="location" class="mdl-radio__button" name="transaction" value="2">
+        <span class="mdl-radio__label">Location</span>
+    </label>
+    <label>Type de biens</label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="appartement">
+      <input type="radio" id="appartement" class="mdl-radio__button" name="bien" value="1">
+      <span class="mdl-radio__label">Appartement</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="maison">
+        <input type="radio" id="maison" class="mdl-radio__button" name="bien" value="2">
+        <span class="mdl-radio__label">Maison</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="garage">
+        <input type="radio" id="garage" class="mdl-radio__button" name="bien" value="3">
+        <span class="mdl-radio__label">Garage</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="terrain">
+        <input type="radio" id="terrain" class="mdl-radio__button" name="bien" value="4">
+        <span class="mdl-radio__label">Terrain</span>
+    </label>
+    <label>Type de chauffage</label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="aucun">
+      <input type="radio" id="aucun" class="mdl-radio__button" name="chauffage" value="1">
+      <span class="mdl-radio__label">Aucun</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="individuel">
+        <input type="radio" id="individuel" class="mdl-radio__button" name="chauffage" value="2">
+        <span class="mdl-radio__label">Individuel</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="collectif">
+        <input type="radio" id="collectif" class="mdl-radio__button" name="chauffage" value="3">
+        <span class="mdl-radio__label">Collectif</span>
+    </label>
+    
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored  mdl-js-ripple-effect" id="search-button">
       <i class="material-icons">search</i>
     </button>
@@ -61,6 +57,7 @@
         }
         
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

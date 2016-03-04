@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-﻿main {
-=======
-﻿/****type****/
-body {
->>>>>>> develop
+main {
     background-color: rgb(51,51,51);
 }
 
@@ -18,8 +13,7 @@ body {
     border-radius: 50%;
     margin-right: 5px;
 }
-<<<<<<< HEAD
-=======
+
 #form1{
     padding-top: 50px;
     
@@ -62,7 +56,6 @@ body {
     /*75%  {border-color:green;}*/
     100% {border-color:rgb(51,51,51);}
 }
->>>>>>> develop
 
 .margin_left{
     margin-left: 10px;
