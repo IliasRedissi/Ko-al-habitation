@@ -47,6 +47,27 @@
         <input type="radio" id="collectif" class="mdl-radio__button" name="chauffage" value="3">
         <span class="mdl-radio__label">Collectif</span>
     </label>
+    <label>Type d'énergie de chauffage</label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="aucunEnergie">
+      <input type="radio" id="aucunEnergie" class="mdl-radio__button" name="energie" value="1">
+      <span class="mdl-radio__label">Aucun</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="fioul">
+        <input type="radio" id="fioul" class="mdl-radio__button" name="energie" value="2">
+        <span class="mdl-radio__label">Fioul</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="gaz">
+        <input type="radio" id="gaz" class="mdl-radio__button" name="energie" value="3">
+        <span class="mdl-radio__label">Gaz</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="electrique">
+        <input type="radio" id="electrique" class="mdl-radio__button" name="energie" value="4">
+        <span class="mdl-radio__label">Electrique</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="bois">
+        <input type="radio" id="bois" class="mdl-radio__button" name="energie" value="5">
+        <span class="mdl-radio__label">Bois</span>
+    </label>
     
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored  mdl-js-ripple-effect" id="search-button">
       <i class="material-icons">search</i>
