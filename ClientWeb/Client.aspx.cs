@@ -50,7 +50,12 @@ namespace ClientWeb
                     DateMiseEnTransaction2 = null,
                     DateTransaction1 = null,
                     DateTransaction2 = null,
-                    EnergieChauffage = null,
+                    EnergieChauffage = (Request.QueryString.Get("energie") == "1" ? BienImmobilierBase.eEnergieChauffage.Aucun
+                            : Request.QueryString.Get("energie") == "2" ? BienImmobilierBase.eEnergieChauffage.Fioul
+                            : Request.QueryString.Get("energie") == "3" ? BienImmobilierBase.eEnergieChauffage.Gaz
+                            : Request.QueryString.Get("energie") == "4" ? BienImmobilierBase.eEnergieChauffage.Electrique
+                            : Request.QueryString.Get("energie") == "5" ? BienImmobilierBase.eEnergieChauffage.Bois
+                            : (object)DBNull.Value) as BienImmobilierBase.eEnergieChauffage?,
                     MontantCharges1 = -1,
                     MontantCharges2 = -1,
                     NbEtages1 = -1,
@@ -64,9 +69,19 @@ namespace ClientWeb
                     Surface1 = -1,
                     Surface2 = -1,
                     TransactionEffectuee = null,
-                    TypeBien = null,
-                    TypeChauffage = null,
-                    TypeTransaction = (BienImmobilierBase.eTypeTransaction?) (Request.QueryString.Get("transaction") == "1" ? BienImmobilierBase.eTypeTransaction.Vente : Request.QueryString.Get("transaction") == "2" ? BienImmobilierBase.eTypeTransaction.Location :  (object) DBNull.Value),
+                    TypeBien = (Request.QueryString.Get("bien") == "1" ? BienImmobilierBase.eTypeBien.Appartement
+                            : Request.QueryString.Get("bien") == "2" ? BienImmobilierBase.eTypeBien.Maison
+                            : Request.QueryString.Get("bien") == "3" ? BienImmobilierBase.eTypeBien.Garage
+                            : Request.QueryString.Get("bien") == "4" ? BienImmobilierBase.eTypeBien.Terrain
+                                : (object)DBNull.Value) as BienImmobilierBase.eTypeBien?,
+                    TypeChauffage = (Request.QueryString.Get("chauffage") == "1" ? BienImmobilierBase.eTypeChauffage.Aucun
+                            : Request.QueryString.Get("chauffage") == "2" ? BienImmobilierBase.eTypeChauffage.Individuel
+                            : Request.QueryString.Get("chauffage") == "3" ? BienImmobilierBase.eTypeChauffage.Collectif
+                                : (object)DBNull.Value) as BienImmobilierBase.eTypeChauffage?,
+                    TypeTransaction = 
+                        (Request.QueryString.Get("transaction") == "1" ? BienImmobilierBase.eTypeTransaction.Vente
+                            : Request.QueryString.Get("transaction") == "2" ? BienImmobilierBase.eTypeTransaction.Location
+                                : (object) DBNull.Value) as BienImmobilierBase.eTypeTransaction?,
                     TitreContient = Request.QueryString.Get("name"),
                 };
                 var resultat = client.LireListeBiensImmobiliers(criteres, CurrentPage, NbBiens);
