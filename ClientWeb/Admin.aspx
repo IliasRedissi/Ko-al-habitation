@@ -11,11 +11,11 @@
                 var checked = $(this).is(":checked");
                 $("[id*=gvResultats] input[type=checkbox]").not("#chkSelectionnerTout").prop("checked", checked);
             });
-            $("#checkbox1").bind("click", function () {
+            $("[id*=gvResultats] input[type=checkbox]").not("#chkSelectionnerTout").forEach(bind("click", function () {
                 if (!$(this).is(":checked")) {
                     $("#chkSelectionnerTout").prop("checked", $(this).is(":checked"));
                 }
-            });
+            }));
             // });
         });
 

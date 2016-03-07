@@ -19,7 +19,7 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width_inherit">
                 <asp:TextBox ID="txtPrice" runat="server" CssClass="mdl-textfield__input" TextMode="SingleLine" pattern="-?[0-9]*(\.[0-9]+)?"></asp:TextBox>
                 <label class="mdl-textfield__label mdl-color-text--accent" for="txtPrice">Prix</label>
-                <span class="mdl-textfield__error">Ce n'est pas un entier!</span>
+                <span class="mdl-textfield__error">Ce n'est pas un nombre!</span>
             </div>
             <p>Image :</p>
             <asp:FileUpload ID="FileUpload1" runat="server" />
