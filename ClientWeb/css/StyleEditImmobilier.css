@@ -1,0 +1,14 @@
+﻿.input {
+    width: 50%;
+}
+
+#content_edit{
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+#content_edit_in{
+    width: 50%;
+    margin: auto;
+}

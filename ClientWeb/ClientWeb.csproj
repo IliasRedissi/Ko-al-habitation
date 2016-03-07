@@ -69,9 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin.aspx" />
+    <Content Include="Client.aspx" />
     <Content Include="CreateImmobilier.aspx" />
     <Content Include="css\StyleCreateimmobilier.css" />
+    <Content Include="css\StyleEditImmobilier.css" />
     <Content Include="css\styleMain.css" />
+    <Content Include="EditImmobilier.aspx" />
     <Content Include="packages.config" />
     <Content Include="General.Master" />
     <None Include="Service References\ServiceAgence\Agence.wsdl" />
@@ -102,6 +105,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="UploadTest.aspx" />
     <Content Include="Web.config" />
     <None Include="Service References\ServiceAgence\Agence.xsd">
       <SubType>Designer</SubType>
@@ -124,6 +128,13 @@
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Client.aspx.cs">
+      <DependentUpon>Client.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client.aspx.designer.cs">
+      <DependentUpon>Client.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateImmobilier.aspx.cs">
       <DependentUpon>CreateImmobilier.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +149,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditImmobilier.aspx.cs">
+      <DependentUpon>EditImmobilier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditImmobilier.aspx.designer.cs">
+      <DependentUpon>EditImmobilier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="General.Master.cs">
       <DependentUpon>General.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +168,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UploadTest.aspx.cs">
+      <DependentUpon>UploadTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadTest.aspx.designer.cs">
+      <DependentUpon>UploadTest.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

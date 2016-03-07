@@ -10,42 +10,33 @@
 namespace ClientWeb {
     
     
-    public partial class Admin {
+    public partial class UploadTest {
         
         /// <summary>
-        /// Contrôle HyperLink1.
+        /// Contrôle FileUpload1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// Contrôle btDelete.
+        /// Contrôle btnUpload.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btDelete;
+        protected global::System.Web.UI.WebControls.Button btnUpload;
         
         /// <summary>
-        /// Contrôle lblErreurs.
+        /// Contrôle GridView1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErreurs;
-        
-        /// <summary>
-        /// Contrôle gvResultats.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvResultats;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

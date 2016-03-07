@@ -14,12 +14,18 @@ namespace ClientWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack) return;
+            charger();
+        }
 
+        private void charger()
+        {
             List<ServiceAgence.BienImmobilierBase> liste = null;
             using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
             {
-                /*
-                ServiceAgence.CriteresRechercheBiensImmobiliers criteres = new ServiceAgence.CriteresRechercheBiensImmobiliers();
+
+                ServiceAgence.CriteresRechercheBiensImmobiliers criteres =
+                    new ServiceAgence.CriteresRechercheBiensImmobiliers();
                 criteres.DateMiseEnTransaction1 = null;
                 criteres.DateMiseEnTransaction2 = null;
                 criteres.DateTransaction1 = null;
@@ -41,9 +47,10 @@ namespace ClientWeb
                 criteres.TypeBien = null;
                 criteres.TypeChauffage = null;
                 criteres.TypeTransaction = null;
-                ServiceAgence.ResultatListeBiensImmobiliers resultat = client.LireListeBiensImmobiliers(criteres, null, null);
-                */
-                ServiceAgence.ResultatListeBiensImmobiliers resultat = client.LireListeBiensImmobiliers(null, null, null);
+                ServiceAgence.ResultatListeBiensImmobiliers resultat = client.LireListeBiensImmobiliers(criteres,
+                    null, null);
+
+                //ServiceAgence.ResultatListeBiensImmobiliers resultat = client.LireListeBiensImmobiliers(null, null, null);
 
                 if (resultat.SuccesExecution)
                 {
@@ -55,10 +62,55 @@ namespace ClientWeb
                     this.lblErreurs.Text = resultat.ErreursBloquantes.ToString();
                 }
             }
-            liste.Add(new BienImmobilierBase());
-
-            this.rpResultats.DataSource = liste;
-            this.rpResultats.DataBind();
+            this.gvResultats.DataSource = liste;
+            this.gvResultats.DataBind();
         }
+
+        private void SupprimerBien(string id)
+        {
+            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+            {
+                ServiceAgence.ResultatBool r = client.SupprimerBienImmobilier(id);
+                if (!r.SuccesExecution)
+                {
+                    lblErreurs.Text = convertErrorToString(r.ErreursBloquantes);
+                }
+            }
+        }
+
+        private string convertErrorToString(List<ServiceAgence.ResultatOperation.Erreur> liste)
+        {
+            string resultat = "";
+            foreach (ServiceAgence.ResultatOperation.Erreur err in liste)
+            {
+                if (resultat != "") resultat += "<br/>";
+                resultat += err.Message;
+            }
+            return resultat;
+        }
+
+        protected void btDelete_OnClick(object sender, EventArgs e)
+        {
+            // throw new NotImplementedException();
+
+            //var niah = $("#table");
+            //var id = 
+            foreach (GridViewRow row in gvResultats.Rows)
+            {
+                CheckBox chb = (CheckBox)row.Cells[0].Controls[1];
+                if (chb.Checked)
+                {
+                    String id = chb.Attributes["idBien"];
+                    SupprimerBien(id);
+                    charger();
+                }
+            }
+        }
+
+        protected void bt_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/EditImmobilier.aspx?id=" + ((Button)sender).Attributes["idBien"].ToString());
+        }
+
     }
 }

@@ -95,3 +95,12 @@ body {
     margin: 5px;
     max-width: 300px;
 }
+
+.margin_auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.width_inherit{
+    width:inherit;
+}
