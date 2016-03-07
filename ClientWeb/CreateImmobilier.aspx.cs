@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -55,6 +56,18 @@ namespace ClientWeb
                 client.AjouterBienImmobilier(bien);
                 Response.Redirect("~/Admin.aspx");
             }
+        }
+        protected void Upload(object sender, EventArgs e)
+        {
+            /*
+            if (FileUpload1.HasFile)
+            {
+                string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
+                var name = FileUpload1.PostedFile.FileName;
+                
+                Response.Redirect(Request.Url.AbsoluteUri);
+            }
+            */
         }
     }
 }

@@ -22,6 +22,9 @@
                 <span class="mdl-textfield__error">Ce n'est pas un entier!</span>
             </div>
             <p>Image :</p>
+            <asp:FileUpload ID="FileUpload1" runat="server" />
+    <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="Upload" />
+    <hr />
             <div class="boutton">
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin.aspx" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Annuler
