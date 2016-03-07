@@ -7,8 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace ClientWeb
 {
-    public partial class General : System.Web.UI.MasterPage
-    {
+public partial class General : System.Web.UI.MasterPage
+{
+    protected bool search = true;
         protected void Page_Load(object sender, EventArgs e)
         {
 

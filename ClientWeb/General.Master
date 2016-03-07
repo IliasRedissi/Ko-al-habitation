@@ -13,6 +13,7 @@
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -49,11 +50,15 @@
         <main class="mdl-layout__content">
             <div class="content mdl-grid mdl-grid--no-spacing">
                 <div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
+                    <% if (search) { %>
                     <aside class="mdl-components__nav docs-text-styling mdl-shadow--4dp" id="search-container">
                         <form id="search">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolderSearch" runat="server"/>
                         </form>
                     </aside>
+                    <% 
+                        }
+                    %>
                     <main class="mdl-components__pages">
                         <form id ="form1" runat="server">
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
