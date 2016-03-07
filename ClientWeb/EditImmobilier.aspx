@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="EditImmobilier.aspx.cs" Inherits="ClientWeb.EditImmobilier" %>
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="EditImmobilier.aspx.cs" Inherits="ClientWeb.EditImmobilier" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="./css/StyleEditImmobilier.css" />
