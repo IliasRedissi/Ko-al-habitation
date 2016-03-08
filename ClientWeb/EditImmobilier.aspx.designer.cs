@@ -22,6 +22,15 @@ namespace ClientWeb {
         protected global::System.Web.UI.WebControls.Label lblErreurs;
         
         /// <summary>
+        /// Contrôle imgImmobilier.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgImmobilier;
+        
+        /// <summary>
         /// Contrôle txtTitle.
         /// </summary>
         /// <remarks>

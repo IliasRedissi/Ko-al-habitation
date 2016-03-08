@@ -69,6 +69,12 @@ namespace ClientWeb
                     ResultatBienImmobilier result = client.LireDetailsBienImmobilier(Request.QueryString["id"]);
                     if (result.SuccesExecution)
                     {
+                        if(!String.IsNullOrEmpty(result.Bien.PhotoPrincipaleBase64))
+                        imgImmobilier.ImageUrl = "data:img/png;base64," + result.Bien.PhotoPrincipaleBase64;
+                        else
+                        {
+                            imgImmobilier.ImageUrl = "./res/noImage.jpg";
+                        }
                         listeBien.Add("Appartement");
                         listeBien.Add("Maison");
                         listeBien.Add("Garage");

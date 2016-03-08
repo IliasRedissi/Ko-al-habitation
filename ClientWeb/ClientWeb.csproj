@@ -73,6 +73,7 @@
     <Content Include="Client.aspx" />
     <Content Include="css\components.css" />
     <Content Include="CreateImmobilier.aspx" />
+    <Content Include="css\StyleAdmin.css" />
     <Content Include="css\StyleCreateimmobilier.css" />
     <Content Include="css\StyleEditImmobilier.css" />
     <Content Include="css\styleMain.css" />

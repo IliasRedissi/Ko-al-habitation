@@ -12,7 +12,7 @@ namespace ClientWeb
 
     public partial class Admin : System.Web.UI.Page
     {
-        private const int NbBiens = 3;
+        private const int NbBiens = 8;
 
         readonly PagedDataSource _pgsource = new PagedDataSource();
 
