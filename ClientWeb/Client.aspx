@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="Client.aspx.cs" Inherits="ClientWeb.Client" %>
+<%@ Import Namespace="System.Globalization" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="js/mdl-select.js"></script>
@@ -93,11 +94,11 @@
                             <asp:Label runat="server" ID="Label1" Text='<%# Eval("Titre") %>' />
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Voir l'offre
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="Bien.aspx?id=<%#Eval("Id") %>">Voir l'offre
                             </a>
                             <div class="mdl-layout-spacer"></div>
                             <div class="mdl-color-text--accent price">
-                                <%# Eval("Prix") %>€
+                                <%# ((double) Eval("Prix")).ToString("C", new CultureInfo("fr-FR")) %>
                             </div>
 
                         </div>
