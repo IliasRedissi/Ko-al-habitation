@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClientWeb.ServiceAgence;
 
 namespace ClientWeb
 {
-    public partial class Client : System.Web.UI.Page
+    public partial class Client : Page
     {
         private const int NbBiens = 12;
 
@@ -42,9 +38,9 @@ namespace ClientWeb
 
         private ListeBiensImmobiliers GetListFromDb()
         {
-            using (var client = new ServiceAgence.AgenceClient())
+            using (var client = new AgenceClient())
             {
-                var criteres = new ServiceAgence.CriteresRechercheBiensImmobiliers
+                var criteres = new CriteresRechercheBiensImmobiliers
                 {
                     DateMiseEnTransaction1 = null,
                     DateMiseEnTransaction2 = null,
