@@ -84,7 +84,7 @@ namespace ClientWeb
                                 : (object) DBNull.Value) as BienImmobilierBase.eTypeTransaction?,
                     TitreContient = Request.QueryString.Get("name"),
                 };
-                var resultat = client.LireListeBiensImmobiliers(criteres, CurrentPage, NbBiens);
+                var resultat = client.LireListeBiensImmobiliers(criteres, null, null);
 
                 return resultat.SuccesExecution ? resultat.Liste : new ListeBiensImmobiliers();
             }
