@@ -48,15 +48,19 @@ namespace ClientWeb
                 };
                 var resultat = client.LireListeBiensImmobiliers(criteres, null, null);
 
-                BienImmobilierBase bien = resultat.Liste.List.Find(
-                    delegate(BienImmobilierBase b) {
-                        return b.Id == id;
-                    });
+                BienImmobilierBase bienBase = resultat.Liste.List.Find(b => b.Id == id);
 
-                if(bien == null)
+                if(bienBase == null)
                     Response.Redirect("Client.aspx", true);
 
                 
+                BienImmobilier bien = client.LireDetailsBienImmobilier(bienBase.Id.ToString()).Bien;
+
+                List<BienImmobilier> list = new List<BienImmobilier>();
+                list.Add((BienImmobilier) bien);
+
+                rpBien.DataSource = list;
+                rpBien.DataBind();
             }
         }
     }
