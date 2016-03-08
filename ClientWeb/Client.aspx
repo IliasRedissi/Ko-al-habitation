@@ -94,7 +94,7 @@
                             <asp:Label runat="server" ID="Label1" Text='<%# Eval("Titre") %>' />
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Voir l'offre
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="Bien.aspx?id=<%#Eval("Id") %>">Voir l'offre
                             </a>
                             <div class="mdl-layout-spacer"></div>
                             <div class="mdl-color-text--accent price">
