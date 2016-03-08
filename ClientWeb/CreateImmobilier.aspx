@@ -7,24 +7,27 @@
 
     <div id="content_create" class="block">
         <div id="content_create_in" class="margin_auto">
-
+            <h4 class="mdl-color-text--accent">Création d'un immobilier</h4>
+            <asp:Label ID="lblErreurs" runat="server" Text=""></asp:Label>
+            <asp:Image ID="ImageResult" runat="server"  CssClass="imageUpload"/>
+            <asp:FileUpload ID="FileUpload1" runat="server" accept="image/*" />
+            <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="Upload" />
+            <asp:Label ID="lblUpload" runat="server" Text=""></asp:Label>
+            <hr />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width_inherit">
                 <asp:TextBox ID="txtTitle" runat="server" CssClass="mdl-textfield__input"></asp:TextBox>
                 <label class="mdl-textfield__label mdl-color-text--accent" for="txtTitle">Nom de l'immobilier</label>
             </div>
             <br />
             Type de mobilier : 
-        <asp:DropDownList ID="listBien" runat="server" CssClass="mdl-color--accent"/>
+        <asp:DropDownList ID="listBien" runat="server" CssClass="mdl-color--accent" />
+
             <br />
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label width_inherit">
                 <asp:TextBox ID="txtPrice" runat="server" CssClass="mdl-textfield__input" TextMode="SingleLine" pattern="-?[0-9]*(\.[0-9]+)?"></asp:TextBox>
                 <label class="mdl-textfield__label mdl-color-text--accent" for="txtPrice">Prix</label>
                 <span class="mdl-textfield__error">Ce n'est pas un nombre!</span>
             </div>
-            <p>Image :</p>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
-    <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="Upload" />
-    <hr />
             <div class="boutton">
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin.aspx" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Annuler
