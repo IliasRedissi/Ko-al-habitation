@@ -69,6 +69,10 @@
         <input type="radio" id="bois" class="mdl-radio__button" name="energie" value="5">
         <span class="mdl-radio__label">Bois</span>
     </label>
+    <br/>
+    <label class="mdl-components__link-text">Prix</label>
+    <div id="slider-prix"></div>
+    <div id="slider-piece"></div>
     
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored  mdl-js-ripple-effect" id="search-button">
       <i class="material-icons">search</i>
@@ -77,6 +81,33 @@
         $('#search-button').onclick = function() {
             $('#search').onsubmit();
         }
+
+        var slider_prix = document.getElementById('slider-prix');
+        noUiSlider.create(slider_prix, {
+            start: [<%# PrixMin %>, <%# PrixMax %>],
+            connect: true,
+            step: 1,
+            range: {
+                'min': <%# PrixMin %>,
+                'max': <%# PrixMax %>
+            },
+            format: wNumb({
+                decimals: 0
+            })
+        });
+        var slider_piece = document.getElementById('slider-piece');
+        noUiSlider.create(slider_piece, {
+            start: [<%# NbPieceMin %>, <%# NbPieceMax %>],
+            connect: true,
+            step: 1,
+            range: {
+                'min': <%# NbPieceMin %>,
+                'max': <%# NbPieceMax %>
+            },
+            format: wNumb({
+                decimals: 0
+            })
+        });
         
     </script>
     

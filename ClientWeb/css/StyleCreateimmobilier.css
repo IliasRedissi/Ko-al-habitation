@@ -6,6 +6,9 @@
 option:hover {
     background-color: rgb(69, 90, 100);
 }
+h4 {
+    text-align: center;
+}
 
 #content_create{
     background-color: white;
@@ -17,16 +20,18 @@ option:hover {
 .block{
     display: block;
 }
-
-#content_create:hover{
-    background-color: rgba(255, 255, 255, 0.5);
-    color: white;
-}
 #content_create_in{
     width: 50%;
-    position: relative;
+    margin: auto;
 }
 .boutton{
-    right: 5px;
-    position: absolute;
+    width: 60%;
+    margin: auto;
+    
+}
+
+.imageUpload {
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 5px;
 }

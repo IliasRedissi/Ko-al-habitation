@@ -6,17 +6,24 @@
 
     <script>
         $(document).ready(function () {
-            // Sys.WebForms.PageRequestManager.getInstance().add_pageLoaded(function () {
             $("[id*=chkSelectionnerTout]").bind("click", function () {
                 var checked = $(this).is(":checked");
                 $("[id*=gvResultats] input[type=checkbox]").not("#chkSelectionnerTout").prop("checked", checked);
             });
-            $("[id*=gvResultats] input[type=checkbox]").not("#chkSelectionnerTout").forEach(bind("click", function () {
-                if (!$(this).is(":checked")) {
-                    $("#chkSelectionnerTout").prop("checked", $(this).is(":checked"));
+
+            $(".checkSingle").click(function () {
+                if ($(this).is(":checked")) {
+                    var isAllChecked = 0;
+                    $(".checkSingle").each(function () {
+                        if (!this.checked)
+                            isAllChecked = 1;
+                    });
+                    if (isAllChecked == 0) { $("[id*=chkSelectionnerTout]").prop("checked", true); }
                 }
-            }));
-            // });
+                else {
+                    $("[id*=chkSelectionnerTout]").prop("checked", false);
+                }
+            });
         });
 
     </script>
@@ -37,7 +44,7 @@
                         <asp:CheckBox ID="chkSelectionnerTout" runat="server" />
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <asp:CheckBox runat="server" idBien='<%#Eval("Id")%>'/>
+                        <asp:CheckBox runat="server" idBien='<%#Eval("Id")%>' CssClass="checkSingle"/>
                         <%--Eval("Id")--%>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -62,5 +69,18 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        <div class="grid-container pagination">
+            <asp:Button runat="server" ID="FirstPage" Text="<< First" OnClick="lbFirst_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+            <asp:Button runat="server" ID="PrevPage" Text="< Prev" OnClick="lbPrevious_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+
+            <asp:Repeater ID="rptPaging" OnItemCommand="rptPaging_ItemCommand" OnItemDataBound="rptPaging_ItemDataBound" runat="server">
+                <ItemTemplate>
+                    <asp:Button ID="lbPaging" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" runat="server" CommandArgument='<%# Eval("PageIndex") %>' CommandName="newPage" Text='<%# Eval("PageText") %> ' Width="20px" />
+                </ItemTemplate>
+            </asp:Repeater>
+
+            <asp:Button runat="server" ID="NextPage" Text="Next >" OnClick="lbNext_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+            <asp:Button runat="server" ID="LastPage" Text="Last >>" OnClick="lbLast_Click" CssClass="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--primary" />
+        </div>
     </div>
 </asp:Content>
