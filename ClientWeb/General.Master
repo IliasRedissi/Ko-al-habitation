@@ -31,20 +31,16 @@
             <div class="mdl-layout__header-row mdl-color--primary-dark">
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="#">Link</a>
-                    <a class="mdl-navigation__link" href="#">Link</a>
-                    <a class="mdl-navigation__link" href="#">Link</a>
-                    <a class="mdl-navigation__link" href="#">Link</a>
+                    <a class="mdl-navigation__link" href="Client.aspx">Voir la liste des biens</a>
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" href="Admin.aspx">Administration</a>
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">Ko&lt;al&gt;habitation</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="#">Link</a>
-                <a class="mdl-navigation__link" href="#">Link</a>
-                <a class="mdl-navigation__link" href="#">Link</a>
-                <a class="mdl-navigation__link" href="#">Link</a>
+                <a class="mdl-navigation__link" href="#">Liste des biens</a>
+                <a class="mdl-navigation__link" href="#">Administration</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
@@ -69,10 +65,12 @@
             </div>
             <footer class="mdl-mini-footer">
               <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">Title</div>
+                <div class="mdl-logo">Ko&lt;al&gt;habitation</div>
                 <ul class="mdl-mini-footer__link-list">
-                  <li><a href="#">Help</a></li>
-                  <li><a href="#">Privacy & Terms</a></li>
+                  <li>Site réalisé par Emilien Nicolas et Ilias Redissi</li>
+                  <li><a href="http://www.wtfpl.net/"><img
+                    src="http://www.wtfpl.net/wp-content/uploads/2012/12/logo-220x1601.png"
+                    width="25" height="20" alt="WTFPL" /></a> 2016</li>
                 </ul>
               </div>
             </footer>
