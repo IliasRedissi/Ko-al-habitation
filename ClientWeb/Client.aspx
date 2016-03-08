@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="Client.aspx.cs" Inherits="ClientWeb.Client" %>
+<%@ Import Namespace="System.Globalization" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="js/mdl-select.js"></script>
@@ -97,7 +98,7 @@
                             </a>
                             <div class="mdl-layout-spacer"></div>
                             <div class="mdl-color-text--accent price">
-                                <%# Eval("Prix") %>€
+                                <%# ((double) Eval("Prix")).ToString("C", new CultureInfo("fr-FR")) %>
                             </div>
 
                         </div>
