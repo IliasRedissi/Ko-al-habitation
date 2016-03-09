@@ -85,15 +85,16 @@
       <i class="material-icons">search</i>
     </button>
     <script type="text/javascript">
-        $('#search-button').onclick = function() {
-            $('#search').onsubmit();
-        }
+        var valuePrixMin = $('#prix-min'),
+            valuePrixMax = $('#prix-max'),
+            valuePieceMin = $('#piece-min'),
+            valuePieceMax = $('#piece-max');
 
         var slider_prix = document.getElementById('slider-prix');
         noUiSlider.create(slider_prix, {
             start: [<%# PrixMin %>, <%# PrixMax %>],
             connect: true,
-            step: 1,
+            step: 100,
             range: {
                 'min': <%# PrixMin %>,
                 'max': <%# PrixMax %>
@@ -115,7 +116,16 @@
                 decimals: 0
             })
         });
-        
+
+        $('#search-button').click(function(e) {
+            e.preventDefault();
+            valuePrixMin.val(slider_prix.noUiSlider.get()[0]);
+            valuePrixMax.val(slider_prix.noUiSlider.get()[1]);
+            valuePieceMin.val(slider_piece.noUiSlider.get()[0]);
+            valuePieceMax.val(slider_piece.noUiSlider.get()[1]);
+            $('#search').submit();
+        });
+
     </script>
     
 </asp:Content>
