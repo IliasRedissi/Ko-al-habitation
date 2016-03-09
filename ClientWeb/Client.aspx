@@ -69,11 +69,18 @@
         <input type="radio" id="bois" class="mdl-radio__button" name="energie" value="5">
         <span class="mdl-radio__label">Bois</span>
     </label>
-    <br/>
+    <br/><br/>
     <label class="mdl-components__link-text">Prix</label>
     <div id="slider-prix"></div>
-    <div id="slider-piece"></div>
+    <input type="hidden" name="prix-min" id="prix-min"/>
+    <input type="hidden" name="prix-max" id="prix-max"/>
     
+    <br/><br/>
+    <label class="mdl-components__link-text">Nombre de pièces</label>
+    <div id="slider-piece"></div>
+    <input type="hidden" name="piece-min" id="piece-min"/>
+    <input type="hidden" name="piece-max" id="piece-max"/>
+
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored  mdl-js-ripple-effect" id="search-button">
       <i class="material-icons">search</i>
     </button>
