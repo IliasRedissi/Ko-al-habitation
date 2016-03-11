@@ -33,6 +33,25 @@ namespace ClientWeb
             ImageResult.ImageUrl = "~/res/noImage.jpg";
             this.listBien.DataSource = liste;
             this.listBien.DataBind();
+            liste = new List<String>();
+            liste.Add("Location");
+            liste.Add("Vente");
+            this.listeTypeLocation.DataSource = liste;
+            this.listeTypeLocation.DataBind();
+            liste = new List<String>();
+            liste.Add("Aucun");
+            liste.Add("Individuel");
+            liste.Add("Collectif");
+            this.listeChauffage.DataSource = liste;
+            this.listeChauffage.DataBind();
+            liste = new List<String>();
+            liste.Add("Aucun");
+            liste.Add("Fioul");
+            liste.Add("Gaz");
+            liste.Add("Electrique");
+            liste.Add("Bois");
+            this.listeEnergie.DataSource = liste;
+            this.listeEnergie.DataBind();
         }
 
         protected void AddImmobilier_Click(object sender, EventArgs e)
@@ -42,23 +61,13 @@ namespace ClientWeb
                 BienImmobilier bien = new BienImmobilier();
                 bien.Titre = this.txtTitle.Text;
                 double price;
-                /*
-                if(!Double.TryParse(this.txtPrice.Text, out price))
-                {
-                    price = resultat.Bien.Prix;
-                }
-                */
                 var style = NumberStyles.Float | NumberStyles.AllowThousands;
                 var culture = CultureInfo.InvariantCulture;
-                if (double.TryParse(this.txtPrice.Text, style, culture, out price))
-                {
-                    bien.Prix = price;
-                }
-                else
-                {
-                    bien.Prix = 0;
-                }
-
+                bien.Prix = double.TryParse(this.txtPrice.Text, style, culture, out price) ? price : 0;
+                bien.MontantCharges = double.TryParse(this.txtMontantCharge.Text, style, culture, out price) ? price : 0;
+                int entier;
+                bien.CodePostal = (int.TryParse(this.txtCodePostal.Text, out entier) ? entier : 1).ToString();
+                bien.Ville = this.txtVille.Text;
                 ServiceAgence.BienImmobilierBase.eTypeBien typeBien = BienImmobilierBase.eTypeBien.Terrain;
                 switch (listBien.Text)
                 {
@@ -76,6 +85,59 @@ namespace ClientWeb
                         break;
                 }
                 bien.TypeBien = typeBien;
+                ServiceAgence.BienImmobilierBase.eTypeTransaction typeTransaction = BienImmobilierBase.eTypeTransaction.Location;
+                switch (listeTypeLocation.Text)
+                {
+                    case "Location":
+                        typeTransaction = BienImmobilierBase.eTypeTransaction.Location;
+                        break;
+                    case "Vente":
+                        typeTransaction = BienImmobilierBase.eTypeTransaction.Vente;
+                        break;
+                }
+                bien.TypeTransaction = typeTransaction;
+
+                bien.Description = this.txtDescription.Text;
+                bien.Adresse = this.txtAdresse.Text;
+                ServiceAgence.BienImmobilierBase.eEnergieChauffage typeEnergie = BienImmobilierBase.eEnergieChauffage.Aucun;
+                switch (listeEnergie.Text)
+                {
+                    case "Aucun":
+                        typeEnergie = BienImmobilierBase.eEnergieChauffage.Aucun;
+                        break;
+                    case "Fioul":
+                        typeEnergie = BienImmobilierBase.eEnergieChauffage.Fioul;
+                        break;
+                    case "Gaz":
+                        typeEnergie = BienImmobilierBase.eEnergieChauffage.Gaz;
+                        break;
+                    case "Electrique":
+                        typeEnergie = BienImmobilierBase.eEnergieChauffage.Electrique;
+                        break;
+                    case "Bois":
+                        typeEnergie = BienImmobilierBase.eEnergieChauffage.Bois;
+                        break;
+                }
+                bien.EnergieChauffage = typeEnergie;
+                ServiceAgence.BienImmobilierBase.eTypeChauffage typeChauffage = BienImmobilierBase.eTypeChauffage.Aucun;
+                switch (listeChauffage.Text)
+                {
+                    case "Aucun":
+                        typeChauffage = BienImmobilierBase.eTypeChauffage.Aucun;
+                        break;
+                    case "Individuel":
+                        typeChauffage = BienImmobilierBase.eTypeChauffage.Individuel;
+                        break;
+                    case "Collectif":
+                        typeChauffage = BienImmobilierBase.eTypeChauffage.Collectif;
+                        break;
+                }
+                bien.TypeChauffage = typeChauffage;
+                bien.Surface = double.TryParse(this.txtSurface.Text, style, culture, out price) ? price : 0;
+                bien.NbPieces = int.TryParse(this.txtNbrePiece.Text, out entier) ? entier : 1;
+                bien.NbEtages = int.TryParse(this.txtNbrEtage.Text, out entier) ? entier : 1;
+                bien.NumEtage = int.TryParse(this.txtNumEtage.Text, out entier) ? entier : 1;
+
                 bien.PhotosBase64 = new List<string>();
                 if (!String.IsNullOrEmpty(FichierUpload))
                 {
