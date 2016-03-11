@@ -169,3 +169,20 @@ main {
     display: flex;
     flex-direction: column;
 }
+
+.flex {
+    display: flex;
+}
+
+.flex > * {
+    width: 50%;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-col img {
+    margin: 10px auto;
+}
