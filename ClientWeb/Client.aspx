@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="Client.aspx.cs" Inherits="ClientWeb.Client" %>
+
 <%@ Import Namespace="System.Globalization" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -11,8 +12,8 @@
     </div>
     <label>Type de transactions</label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="achat">
-      <input type="radio" id="achat" class="mdl-radio__button" name="transaction" value="1">
-      <span class="mdl-radio__label">Achat</span>
+        <input type="radio" id="achat" class="mdl-radio__button" name="transaction" value="1">
+        <span class="mdl-radio__label">Achat</span>
     </label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="location">
         <input type="radio" id="location" class="mdl-radio__button" name="transaction" value="2">
@@ -20,8 +21,8 @@
     </label>
     <label>Type de biens</label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="appartement">
-      <input type="radio" id="appartement" class="mdl-radio__button" name="bien" value="1">
-      <span class="mdl-radio__label">Appartement</span>
+        <input type="radio" id="appartement" class="mdl-radio__button" name="bien" value="1">
+        <span class="mdl-radio__label">Appartement</span>
     </label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="maison">
         <input type="radio" id="maison" class="mdl-radio__button" name="bien" value="2">
@@ -37,8 +38,8 @@
     </label>
     <label>Type de chauffage</label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="aucun">
-      <input type="radio" id="aucun" class="mdl-radio__button" name="chauffage" value="1">
-      <span class="mdl-radio__label">Aucun</span>
+        <input type="radio" id="aucun" class="mdl-radio__button" name="chauffage" value="1">
+        <span class="mdl-radio__label">Aucun</span>
     </label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="individuel">
         <input type="radio" id="individuel" class="mdl-radio__button" name="chauffage" value="2">
@@ -50,8 +51,8 @@
     </label>
     <label>Type d'énergie de chauffage</label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="aucunEnergie">
-      <input type="radio" id="aucunEnergie" class="mdl-radio__button" name="energie" value="1">
-      <span class="mdl-radio__label">Aucun</span>
+        <input type="radio" id="aucunEnergie" class="mdl-radio__button" name="energie" value="1">
+        <span class="mdl-radio__label">Aucun</span>
     </label>
     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="fioul">
         <input type="radio" id="fioul" class="mdl-radio__button" name="energie" value="2">
@@ -69,49 +70,126 @@
         <input type="radio" id="bois" class="mdl-radio__button" name="energie" value="5">
         <span class="mdl-radio__label">Bois</span>
     </label>
-    <br/><br/>
+    <br />
+    <br />
     <label class="mdl-components__link-text">Prix</label>
     <div id="slider-prix"></div>
-    <input type="hidden" name="prix-min" id="prix-min"/>
-    <input type="hidden" name="prix-max" id="prix-max"/>
-    
-    <br/><br/>
+    <input type="hidden" name="prix-min" id="prix-min" />
+    <input type="hidden" name="prix-max" id="prix-max" />
+
+    <br />
+    <br />
+    <label class="mdl-components__link-text">Montant des charges</label>
+    <div id="slider-charges"></div>
+    <input type="hidden" name="charges-min" id="charges-min" />
+    <input type="hidden" name="charges-max" id="charges-max" />
+
+    <br />
+    <br />
     <label class="mdl-components__link-text">Nombre de pièces</label>
     <div id="slider-piece"></div>
-    <input type="hidden" name="piece-min" id="piece-min"/>
-    <input type="hidden" name="piece-max" id="piece-max"/>
+    <input type="hidden" name="piece-min" id="piece-min" />
+    <input type="hidden" name="piece-max" id="piece-max" />
+
+    <br />
+    <br />
+    <label class="mdl-components__link-text">Nombre d'étages</label>
+    <div id="slider-etages"></div>
+    <input type="hidden" name="etages-min" id="etages-min" />
+    <input type="hidden" name="etages-max" id="etages-max" />
+
+    <br />
+    <br />
+    <label class="mdl-components__link-text">Superficie</label>
+    <div id="slider-superficie"></div>
+    <input type="hidden" name="superficie-min" id="superficie-min" />
+    <input type="hidden" name="superficie-max" id="superficie-max" />
+    
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored  mdl-js-ripple-effect" id="search-button">
-      <i class="material-icons">search</i>
+        <i class="material-icons">search</i>
     </button>
     <script type="text/javascript">
         var valuePrixMin = $('#prix-min'),
             valuePrixMax = $('#prix-max'),
             valuePieceMin = $('#piece-min'),
-            valuePieceMax = $('#piece-max');
+            valuePieceMax = $('#piece-max'),
+            valueChargesMin = $('#charges-min'),
+            valueChargesMax = $('#charges-max'),
+            valueEtagesMin = $('#etages-min'),
+            valueEtagesMax = $('#etages-max'),
+            valueSuperficieMin = $('#superficie-min'),
+            valueSuperficieMax = $('#superficie-max');
 
         var slider_prix = document.getElementById('slider-prix');
         noUiSlider.create(slider_prix, {
-            start: [<%# PrixMin %>, <%# PrixMax %>],
+            start: [<%# PrixMin %>, <%# PrixMax + 1 %>],
             connect: true,
             step: 100,
             range: {
                 'min': <%# PrixMin %>,
-                'max': <%# PrixMax %>
-            },
+                'max': <%# PrixMax + 1 %>
+                },
             format: wNumb({
                 decimals: 0
             })
         });
+
         var slider_piece = document.getElementById('slider-piece');
         noUiSlider.create(slider_piece, {
-            start: [<%# NbPieceMin %>, <%# NbPieceMax %>],
+            start: [<%# NbPieceMin %>, <%# NbPieceMax + 1 %>],
             connect: true,
             step: 1,
             range: {
                 'min': <%# NbPieceMin %>,
-                'max': <%# NbPieceMax %>
-            },
+                'max': <%# NbPieceMax + 1 %>
+                },
+            format: wNumb({
+                decimals: 0
+            })
+        });
+
+        var slider_charges = document.getElementById('slider-charges');
+        noUiSlider.create(slider_charges, {
+            start: [<%# ChargesMin %>, <%# ChargesMax + 1 %>],
+            connect: true,
+            step: 1,
+            range: {
+                'min': <%# ChargesMin %>,
+                'max': <%# ChargesMax + 1 %>
+                },
+            format: wNumb({
+                decimals: 0
+            })
+        });
+
+        var slider_etages = document.getElementById('slider-etages');
+        noUiSlider.create(slider_etages, {
+            start: [<%# NbEtagesMin %>, <%# NbEtagesMax + 1 %>],
+            connect: true,
+            step: 1,
+            range: {
+                'min': <%# NbEtagesMin %>,
+                'max': <%# NbEtagesMax + 1 %>
+                },
+            format: wNumb({
+                decimals: 0
+            })
+        });
+
+        var slider_surface = document.getElementById('slider-superficie');
+        noUiSlider.create(slider_surface, {
+            start: [<%# SurfaceMin %>, <%# SurfaceMax + 1 %>],
+            connect: true,
+            step: 1,
+            range: {
+                'min': <%# SurfaceMin %>,
+                'max': <%# SurfaceMax + 1 %>
+                },
             format: wNumb({
                 decimals: 0
             })
@@ -123,11 +201,17 @@
             valuePrixMax.val(slider_prix.noUiSlider.get()[1]);
             valuePieceMin.val(slider_piece.noUiSlider.get()[0]);
             valuePieceMax.val(slider_piece.noUiSlider.get()[1]);
+            valueChargesMin.val(slider_charges.noUiSlider.get()[0]);
+            valueChargesMax.val(slider_charges.noUiSlider.get()[1]);
+            valueEtagesMin.val(slider_etages.noUiSlider.get()[0]);
+            valueEtagesMax.val(slider_etages.noUiSlider.get()[1]);
+            valueSuperficieMin.val(slider_surface.noUiSlider.get()[0]);
+            valueSuperficieMax.val(slider_surface.noUiSlider.get()[1]);
             $('#search').submit();
         });
 
     </script>
-    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 

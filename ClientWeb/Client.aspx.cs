@@ -11,10 +11,19 @@ namespace ClientWeb
     {
         private const int NbBiens = 12;
 
-        protected long PrixMax = Int64.MaxValue;
+        private const int MaxValue = 1000;
+
+        protected long PrixMax = MaxValue;
         protected long PrixMin = 0;
-        protected long NbPieceMax = Int64.MaxValue;
+        protected long NbPieceMax = MaxValue;
         protected long NbPieceMin = 0;
+        protected int ChargesMax = MaxValue;
+        protected int ChargesMin = 0;
+        protected int NbEtagesMax = MaxValue;
+        protected int NbEtagesMin = 0;
+        protected int SurfaceMax = MaxValue;
+        protected int SurfaceMin = 0;
+
 
         readonly PagedDataSource _pgsource = new PagedDataSource();
 
@@ -58,19 +67,19 @@ namespace ClientWeb
                             : Request.QueryString.Get("energie") == "4" ? BienImmobilierBase.eEnergieChauffage.Electrique
                             : Request.QueryString.Get("energie") == "5" ? BienImmobilierBase.eEnergieChauffage.Bois
                             : (object)DBNull.Value) as BienImmobilierBase.eEnergieChauffage?,
-                    MontantCharges1 = -1,
-                    MontantCharges2 = -1,
-                    NbEtages1 = -1,
-                    NbEtages2 = -1,
-                    NbPieces1 = -1,
-                    NbPieces2 = -1,
+                    MontantCharges1 = Request.QueryString["charges-min"] != null && Request.QueryString["charges-min"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["charges-min"])) : -1,
+                    MontantCharges2 = Request.QueryString["charges-max"] != null && Request.QueryString["charges-max"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["charges-max"])) : -1,
+                    NbEtages1 = Request.QueryString["etages-min"] != null && Request.QueryString["etages-min"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["etages-min"])) : -1,
+                    NbEtages2 = Request.QueryString["etages-max"] != null && Request.QueryString["etages-max"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["etages-max"])) : -1,
+                    NbPieces1 = Request.QueryString["piece-min"] != null && Request.QueryString["piece-min"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["piece-min"])) : -1,
+                    NbPieces2 = Request.QueryString["piece-max"] != null && Request.QueryString["piece-max"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["piece-max"])) : -1,
                     NumEtage1 = -1,
                     NumEtage2 = -1,
-                    Prix1 = -1,
-                    Prix2 = -1,
-                    Surface1 = -1,
-                    Surface2 = -1,
-                    TransactionEffectuee = null,
+                    Prix1 = Request.QueryString["prix-min"] != null && Request.QueryString["prix-min"] != "" ? double.Parse(Request.QueryString["prix-min"]) : -1,
+                    Prix2 = Request.QueryString["prix-max"] != null && Request.QueryString["prix-max"] != "" ? double.Parse(Request.QueryString["prix-max"]) : -1,
+                    Surface1 = Request.QueryString["superficie-min"] != null && Request.QueryString["superficie-min"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["superficie-min"])) : -1,
+                    Surface2 = Request.QueryString["superficie-max"] != null && Request.QueryString["superficie-max"] != "" ? Convert.ToInt32(float.Parse(Request.QueryString["superficie-max"])) : -1,
+                    TransactionEffectuee = false,
                     TypeBien = (Request.QueryString.Get("bien") == "1" ? BienImmobilierBase.eTypeBien.Appartement
                             : Request.QueryString.Get("bien") == "2" ? BienImmobilierBase.eTypeBien.Maison
                             : Request.QueryString.Get("bien") == "3" ? BienImmobilierBase.eTypeBien.Garage
@@ -116,9 +125,15 @@ namespace ClientWeb
             {
                 PrixMin = ((long) Math.Truncate(liste.List.Min(b => b.Prix)));
                 PrixMax = ((long) Math.Truncate(liste.List.Max(b => b.Prix))) + 1;
-                //var client = new AgenceClient();
-                //NbPieceMin = ((long) liste.List.Min(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbPieces));
-                //NbPieceMax = ((long) liste.List.Max(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbPieces));
+                var client = new AgenceClient();
+                NbPieceMin = ((long) liste.List.Min(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbPieces));
+                NbPieceMax = ((long) liste.List.Max(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbPieces));
+                ChargesMin = ((int) liste.List.Min(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.MontantCharges));
+                ChargesMax = ((int) liste.List.Max(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.MontantCharges));
+                NbEtagesMin = ((int) liste.List.Min(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbEtages));
+                NbEtagesMax = ((int) liste.List.Max(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbEtages));
+                SurfaceMin = ((int) liste.List.Min(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.Surface));
+                SurfaceMax = ((int) liste.List.Max(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.Surface));
             }
 
             Page.DataBind();
