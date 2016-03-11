@@ -173,7 +173,7 @@
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin.aspx" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Annuler
             </asp:HyperLink>
-            <asp:Button OnClick="AddImmobilier_Click" ID="AddImmobilier" runat="server" Text="Ajouter" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+            <asp:Button OnClick="AddImmobilier_Click" ID="EditImmobilier" runat="server" Text="Ajouter" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
         </div>
         <br />
         <br />
