@@ -32,7 +32,8 @@
                 <div class="mdl-card__supporting-text">
                     <%# bien.Description %>
                 </div>
-                <ul class="demo-list-icon mdl-list">
+                <div class="flex">
+                    <ul class="demo-list-icon mdl-list">
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons mdl-list__item-icon">date_range</i>
@@ -54,7 +55,7 @@
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
                             <i class="material-icons mdl-list__item-icon">location_city</i>
-                            Montant des charges : <%# bien.Ville + " " + bien.CodePostal %>
+                            Ville : <%# bien.Ville + " " + bien.CodePostal %>
                         </span>
                     </li>
                     <li class="mdl-list__item">
@@ -71,25 +72,25 @@
                     </li>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
-                            <i class="material-icons mdl-list__item-icon"></i>
-                            Nombre de pièces : <%# bien.NbPieces %>
-                        </span>
-                    </li>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons mdl-list__item-icon"></i>
+                            <i class="material-icons mdl-list__item-icon">layers</i>
                             Surface : <%# bien.Surface %> m²
                         </span>
                     </li>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
-                            <i class="material-icons mdl-list__item-icon"></i>
+                            <i class="material-icons mdl-list__item-icon">format_list_numbered</i>
+                            Nombre de pièces : <%# bien.NbPieces %>
+                        </span>
+                    </li>
+                    <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                            <i class="material-icons mdl-list__item-icon">format_list_numbered</i>
                             Numéro de l'étage : <%# bien.NumEtage %>
                         </span>
                     </li>
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
-                            <i class="material-icons mdl-list__item-icon"></i>
+                            <i class="material-icons mdl-list__item-icon">format_list_numbered</i>
                             Nombre d'étages : <%# bien.NbEtages %>
                         </span>
                     </li>
@@ -106,7 +107,14 @@
                         </span>
                     </li>
                 </ul>
-
+                    <div class="flex-col">
+                        <% foreach (var image in bien.PhotosBase64)
+                            { %>
+                            <img src="<%= "data:img/png;base64," + image %>" width="300" class=" mdl-shadow--4dp"/>      
+                         
+                           <% } %>
+                    </div>
+                </div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent">Contacter le vendeur
                     </a>
