@@ -12,6 +12,8 @@ namespace ClientWeb
 {
     public partial class Bien : System.Web.UI.Page
     {
+        protected BienImmobilier bien;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Request.QueryString.Get("id") == null || Request.QueryString.Get("id") == "")
@@ -54,13 +56,9 @@ namespace ClientWeb
                     Response.Redirect("Client.aspx", true);
 
                 
-                BienImmobilier bien = client.LireDetailsBienImmobilier(bienBase.Id.ToString()).Bien;
+                bien = client.LireDetailsBienImmobilier(bienBase.Id.ToString()).Bien;
 
-                List<BienImmobilier> list = new List<BienImmobilier>();
-                list.Add((BienImmobilier) bien);
-
-                rpBien.DataSource = list;
-                rpBien.DataBind();
+                Page.DataBind();
             }
         }
     }

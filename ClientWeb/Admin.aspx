@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/General.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="ClientWeb.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="./css/StyleAdmin.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -58,7 +57,7 @@
                 <asp:TemplateField>
                     <HeaderTemplate>Image</HeaderTemplate>
                     <ItemTemplate>
-                        <img height="150" width="200" src="<%#(String) Eval("PhotoPrincipaleBase64") != "" ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg" %>" alt="" />
+                        <img height="200" width="250" src="<%#(String) Eval("PhotoPrincipaleBase64") != "" ? "data:img/png;base64," + Eval("PhotoPrincipaleBase64") : "./res/noImage.jpg" %>" alt="" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>

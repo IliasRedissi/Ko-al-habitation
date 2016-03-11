@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClientWeb.ServiceAgence;
@@ -9,6 +10,11 @@ namespace ClientWeb
     public partial class Client : Page
     {
         private const int NbBiens = 12;
+
+        protected long PrixMax = Int64.MaxValue;
+        protected long PrixMin = 0;
+        protected long NbPieceMax = Int64.MaxValue;
+        protected long NbPieceMin = 0;
 
         readonly PagedDataSource _pgsource = new PagedDataSource();
 
@@ -81,7 +87,7 @@ namespace ClientWeb
                     TitreContient = Request.QueryString.Get("name"),
                 };
                 var resultat = client.LireListeBiensImmobiliers(criteres, null, null);
-
+                
                 return resultat.SuccesExecution ? resultat.Liste : new ListeBiensImmobiliers();
             }
         }
@@ -105,6 +111,17 @@ namespace ClientWeb
             // Bind data into repeater
             rpResultats.DataSource = _pgsource;
             rpResultats.DataBind();
+
+            if (liste.List != null && liste.List.Count != 0)
+            {
+                PrixMin = ((long) Math.Truncate(liste.List.Min(b => b.Prix)));
+                PrixMax = ((long) Math.Truncate(liste.List.Max(b => b.Prix))) + 1;
+                //var client = new AgenceClient();
+                //NbPieceMin = ((long) liste.List.Min(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbPieces));
+                //NbPieceMax = ((long) liste.List.Max(b => client.LireDetailsBienImmobilier(b.Id.ToString()).Bien.NbPieces));
+            }
+
+            Page.DataBind();
 
             // Call the function to do paging
             HandlePaging();
