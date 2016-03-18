@@ -4,8 +4,43 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="Titre" TargetType="TextBlock">
+            <Setter Property="TextTrimming" Value="None" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0,0,5,0" />
+            <Setter Property="TextAlignment" Value="Right" />
+        </Style>
+    </Window.Resources>
 
-    <Grid>
-        
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <ListBox ItemsSource="{Binding ListeBiens.List}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Nom :" Style="{StaticResource Titre}" />
+                            <TextBlock Text="{Binding Titre}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Prix :" Style="{StaticResource Titre}" />
+                            <TextBlock Text="{Binding Prix}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="CodePostal :" Style="{StaticResource Titre}" />
+                            <TextBlock Text="{Binding CodePostal}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Ville :" Style="{StaticResource Titre}" />
+                            <TextBlock Text="{Binding Ville}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+        <Grid ></Grid>
+    </StackPanel>
 </Window>
