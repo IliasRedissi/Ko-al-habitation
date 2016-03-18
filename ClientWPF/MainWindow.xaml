@@ -12,9 +12,13 @@
             <Setter Property="TextAlignment" Value="Right" />
         </Style>
     </Window.Resources>
-
-    <StackPanel Orientation="Horizontal">
-        <ListBox ItemsSource="{Binding ListeBiens.List}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding BienImmobiliers.List}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -41,6 +45,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
         <Grid ></Grid>
-    </StackPanel>
+    </Grid>
 </Window>
