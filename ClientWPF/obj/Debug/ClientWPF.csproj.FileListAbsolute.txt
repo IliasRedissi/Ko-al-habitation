@@ -11,3 +11,6 @@ C:\Tmp\AgenceImmobiliere\ClientWPF\obj\Debug\ClientWPF.Properties.Resources.reso
 C:\Tmp\AgenceImmobiliere\ClientWPF\obj\Debug\ClientWPF.csproj.GenerateResource.Cache
 C:\Tmp\AgenceImmobiliere\ClientWPF\obj\Debug\ClientWPF.exe
 C:\Tmp\AgenceImmobiliere\ClientWPF\obj\Debug\ClientWPF.pdb
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ClientWPF\bin\Debug\ClientWPF.exe.config
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ClientWPF\obj\Debug\ClientWPF.exe
+C:\Users\Milihhard\Documents\Visual Studio 2015\Projects\Ko-al-habitation\ClientWPF\obj\Debug\ClientWPF.pdb

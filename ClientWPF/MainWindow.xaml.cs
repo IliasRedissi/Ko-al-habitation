@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+using ClientWPF.ServiceAgence;
 
 namespace ClientWPF
 {
@@ -23,6 +24,8 @@ namespace ClientWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
+        ListeBiensImmobiliers listeBiens;
+
     }
 }
