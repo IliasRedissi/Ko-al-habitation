@@ -86,7 +86,7 @@
             </Grid>
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
             <Grid Grid.Column="2">
-                <ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypeProvider}}"></ComboBox>
+                <!--<ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypeProvider}}"></ComboBox>-->
             </Grid>
         </Grid>
     </DockPanel>
