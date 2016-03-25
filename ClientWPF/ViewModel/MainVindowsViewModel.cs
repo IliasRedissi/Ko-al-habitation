@@ -152,8 +152,7 @@ namespace ClientWPF.ViewModel
 
         private void ShowImmoDesc()
         {
-            throw new NotImplementedException();
-            //ToDO afficher l'immobilier concerné
+            //ToDO Affichage de l'image
         }
     }
 }
