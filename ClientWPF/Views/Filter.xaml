@@ -4,8 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientWPF"
+        xmlns:vm="clr-namespace:ClientWPF.ViewModel"
+        xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Filter" Height="300" Width="458.049">
+        Title="Filter">
+    <Window.DataContext>
+        <vm:FilterViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <ObjectDataProvider x:Key="TransactionTypeProvider"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -23,6 +38,8 @@
             <TextBlock Text="Name: "/>
             <TextBox x:Name="TxtName" Text="Nom de l'immobilier"/>
         </StackPanel>
+        <ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypeProvider}}" SelectedValue="{Binding SelectedTypeTransaction}"></ComboBox>
+        <RadioButton x:Name="RbLocation" Grid.Row="0" Grid.Column="2" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <RadioButton x:Name="RadioButton" Grid.Row="0" Grid.Column="2" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         <Button Grid.Column="3" Grid.Row="2" Content="Filtrer"/>

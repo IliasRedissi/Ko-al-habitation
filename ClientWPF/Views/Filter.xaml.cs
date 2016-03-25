@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace ClientWPF
 {
-    /// <summary>
-    /// Logique d'interaction pour Filter.xaml
-    /// </summary>
+
     public partial class Filter : Window
     {
         public Filter()

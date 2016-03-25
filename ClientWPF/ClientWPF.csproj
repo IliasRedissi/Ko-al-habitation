@@ -58,15 +58,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\BaseNotifyPropertyChanged.cs" />
-    <Compile Include="ViewModel\EventBinding.cs" />
-    <Compile Include="ViewModel\EventBindingArgs.cs" />
-    <Compile Include="ViewModel\EventBindingCommand.cs" />
+    <Compile Include="ViewModel\FilterViewModel.cs" />
+    <Compile Include="Views\EventBinding.cs" />
+    <Compile Include="Commands\EventBindingArgs.cs" />
+    <Compile Include="Commands\EventBindingCommand.cs" />
     <Compile Include="ViewModel\MainVindowsViewModel.cs" />
     <Compile Include="Views\Filter.xaml.cs">
       <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaseCommand.cs" />
-    <Compile Include="Models\GenericBaseCommand.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\GenericBaseCommand.cs" />
     <Compile Include="Service References\ServiceAgence\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
