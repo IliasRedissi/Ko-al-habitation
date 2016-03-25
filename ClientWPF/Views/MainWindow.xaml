@@ -91,7 +91,7 @@
                         <RowDefinition Height="145*"/>
                         <RowDefinition Height="359*"/>
                     </Grid.RowDefinitions>
-                    <Image Source="res/noImage.jpg" Grid.RowSpan="1" Stretch="UniformToFill"/>
+                    <Image Source="{Binding ImagePrincipale}" Grid.RowSpan="1" Stretch="UniformToFill"/>
                     <Grid Grid.RowSpan="1" Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -106,8 +106,6 @@
                             </TextBlock>
                         </StackPanel>
                     </Grid>
-
-
                 </Grid>
                 <!--<ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypeProvider}}"></ComboBox>-->
             </Grid>

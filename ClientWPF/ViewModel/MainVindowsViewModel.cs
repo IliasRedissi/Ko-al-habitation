@@ -49,6 +49,13 @@ namespace ClientWPF.ViewModel
             }
         }
 
+        public BitmapImage ImagePrincipale
+        {
+            get { return (BitmapImage)GetField(); }
+            set{ SetField(value); }
+            
+        }
+
         #endregion
 
         #region Commands
@@ -157,19 +164,23 @@ namespace ClientWPF.ViewModel
         private void ShowImmoDesc()
         {
             //ToDO Affichage de l'image
+            ImagePrincipale = Base64ToImage(SelectedItem.PhotoPrincipaleBase64);
         }
 
-        public Image Base64ToImage(string base64String)
+        public BitmapImage Base64ToImage(string base64String)
         {
-            byte[] binaryData = Convert.FromBase64String(base64String);
+            if (base64String != "")
+            {
+                byte[] binaryData = Convert.FromBase64String(base64String);
 
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = new MemoryStream(binaryData);
-            bi.EndInit();
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
+                bi.StreamSource = new MemoryStream(binaryData);
+                bi.EndInit();
 
-            var img = new Image {Source = bi};
-            return img;
+                return bi;
+            }
+            return null;
         }
     }
 }
