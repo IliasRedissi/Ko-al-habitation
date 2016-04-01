@@ -37,7 +37,12 @@ namespace ClientWPF.ViewModel
             set { SetField(value); }
         }
 
-        public BienImmobilierBase SelectedItem
+        public BienImmobilier SelectedItem
+        {
+            get { return (BienImmobilier)GetField(); }
+            set { SetField(value); }
+        }
+        public BienImmobilierBase SelectedItemBase
         {
             get { return (BienImmobilierBase)GetField(); }
             set
@@ -49,12 +54,14 @@ namespace ClientWPF.ViewModel
             }
         }
 
-        public BitmapImage ImagePrincipale
+        public BitmapImage Image
         {
             get { return (BitmapImage)GetField(); }
             set{ SetField(value); }
             
         }
+
+        private int IndexImage = 0;
 
         #endregion
 
@@ -72,6 +79,15 @@ namespace ClientWPF.ViewModel
         public BaseCommand OnClickFilterCommand
         {
             get { return new BaseCommand(MenuItem_OnClick); }
+        }
+
+        public BaseCommand OnClickPrecCommand
+        {
+            get { return new BaseCommand(Prec_OnClick); }
+        }
+        public BaseCommand OnClickSuivCommand
+        {
+            get { return new BaseCommand(Suiv_OnClick); }
         }
 
         #endregion
@@ -149,6 +165,16 @@ namespace ClientWPF.ViewModel
             //this.Close();
         }
 
+        private void Prec_OnClick()
+        {
+            ImagePrec();
+        }
+
+        private void Suiv_OnClick()
+        {
+            ImageSuiv();
+        }
+
         #endregion
 
         public void Charger(CriteresRechercheBiensImmobiliers criteres)
@@ -158,13 +184,42 @@ namespace ClientWPF.ViewModel
                 var resultat = client.LireListeBiensImmobiliers(criteres, null, null);
 
                 BienImmobiliers = resultat.SuccesExecution ? resultat.Liste.List : new ObservableCollection<BienImmobilierBase>();
+                BienImmobiliers = resultat.SuccesExecution ? resultat.Liste.List : new ObservableCollection<BienImmobilierBase>();
             }
         }
 
         private void ShowImmoDesc()
         {
             //ToDO Affichage de l'image
-            ImagePrincipale = Base64ToImage(SelectedItem.PhotoPrincipaleBase64);
+            using (var client = new AgenceClient())
+            {
+                SelectedItem = client.LireDetailsBienImmobilier(SelectedItemBase.Id.ToString()).Bien;
+                Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0 ? Base64ToImage(SelectedItem.PhotosBase64[0]) : GetDefaultImage();
+            }
+        }
+
+        private void ImagePrec()
+        {
+            if (SelectedItem != null && SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 1)
+            {
+                if (IndexImage == 0)
+                    IndexImage = SelectedItem.PhotosBase64.Count - 1;
+                else
+                    IndexImage--;
+                Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0 ? Base64ToImage(SelectedItem.PhotosBase64[IndexImage]) : GetDefaultImage();
+            }
+        }
+
+        private void ImageSuiv()
+        {
+            if (SelectedItem != null && SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 1)
+            {
+                if (IndexImage == SelectedItem.PhotosBase64.Count - 1)
+                    IndexImage = 0;
+                else
+                    IndexImage++;
+                Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0 ? Base64ToImage(SelectedItem.PhotosBase64[IndexImage]) : GetDefaultImage();
+            }
         }
 
         public BitmapImage Base64ToImage(string base64String)
@@ -181,6 +236,11 @@ namespace ClientWPF.ViewModel
                 return bi;
             }
             return null;
+        }
+
+        private BitmapImage GetDefaultImage()
+        {
+            return new BitmapImage(new Uri(@"pack://application:,,,/res/noImage.jpg"));
         }
     }
 }
