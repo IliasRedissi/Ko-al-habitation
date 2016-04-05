@@ -32,6 +32,8 @@
                 <MenuItem Header="Filtrer" Command="{Binding OnClickFilterCommand}"/>
                 <MenuItem Header="Restart Filter" Command="{Binding OnClickRestartFilterCommand}"/>
             </MenuItem>
+            <MenuItem Header="Nouveau Bien" Command="{Binding OnClickAddBienCommand}">
+            </MenuItem>
         </Menu>
         <Grid>
             <Grid.ColumnDefinitions>

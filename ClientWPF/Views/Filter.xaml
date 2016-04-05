@@ -1,4 +1,5 @@
 ﻿<Window x:Class="ClientWPF.Filter"
+        x:Name="WindowFilter"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -105,19 +106,19 @@
             <TextBlock Grid.Column="1" Grid.Row="0" Text="Montant charge min: "/>
             <TextBox Grid.Column="2" Grid.Row="0" >
                 <TextBox.Text>
-                    <Binding Path="MontantChargeMin" StringFormat="{}{0:0.00}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                    <Binding Path="MontantChargeMin" StringFormat="{}{0:N}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
                 </TextBox.Text>
             </TextBox>
             <CheckBox Grid.Column="0" Grid.Row="1" IsChecked="{Binding MontantChargeMaxChecked, Mode=TwoWay}"/>
             <TextBlock Grid.Column="1" Grid.Row="1"  Text="Montant charge max: "/>
             <TextBox Grid.Column="2" Grid.Row="1" >
                 <TextBox.Text>
-                    <Binding Path="MontantChargeMax" StringFormat="{}{0:0.00}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                    <Binding Path="MontantChargeMax" StringFormat="{}{0:N}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
                 </TextBox.Text>
             </TextBox>
         </Grid>
-        <Button Grid.Column="7" Grid.Row="5" Content="Filtrer" Command="{Binding OnBtFilterCommand}"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="6" Text="{Binding MessageErreur,Mode=TwoWay }" Foreground="{Binding MessageErreurColor}"></TextBlock>
+        <Button Grid.Column="7" Grid.Row="5" Content="Filtrer" Command="{Binding FilterCommand}" CommandParameter="{Binding ElementName=WindowFilter}"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="6" Text="{Binding MessageErreur,Mode=TwoWay }" Foreground="Red"></TextBlock>
 
     </Grid>
 </Window>
