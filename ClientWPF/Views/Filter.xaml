@@ -8,7 +8,10 @@
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Filter">
+        Title="Filter"
+        vm:EventBinding.EventName="Loaded"
+        vm:EventBinding.Command="{Binding LaunchCommand}">
+
     <Window.DataContext>
         <vm:FilterViewModel/>
     </Window.DataContext>
@@ -20,29 +23,101 @@
                 <x:Type TypeName="s:BienImmobilierBase+eTypeTransaction"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="TypeBienTypeProvider"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeBien"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="TypeChauffageTypeProvider"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="s:BienImmobilierBase+eTypeChauffage"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/> <!--1-->
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="Auto"/> <!--3-->
+            <ColumnDefinition Width="Auto"/> <!--4-->
+            <ColumnDefinition Width="Auto"/> <!--5-->
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/> <!--7-->
+            <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
-        
-        <StackPanel Orientation="Horizontal">
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
             <TextBlock Text="Name: "/>
             <TextBox x:Name="TxtName" Text="Nom de l'immobilier"/>
         </StackPanel>
-        <ComboBox ItemsSource="{Binding Source={StaticResource TransactionTypeProvider}}" SelectedValue="{Binding SelectedTypeTransaction}"></ComboBox>
-        <RadioButton x:Name="RbLocation" Grid.Row="0" Grid.Column="2" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <RadioButton x:Name="RadioButton" Grid.Row="0" Grid.Column="2" Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-
-        <Button Grid.Column="3" Grid.Row="2" Content="Filtrer"/>
+        <ComboBox Grid.Column="3" Grid.Row="1" ItemsSource="{Binding ListTransactions}" SelectedValue="{Binding SelectedTypeTransaction}"/>
+        <ComboBox Grid.Column="4" Grid.Row="1" ItemsSource="{Binding ListTypeBien}" SelectedValue="{Binding SelectedTypeBien}"/>
+        <ComboBox Grid.Column="5" Grid.Row="1" ItemsSource="{Binding ListTypeChauffage}" SelectedValue="{Binding SelectedTypeChauffage}"/>
+        <Grid x:Name="GridPrice" Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Prix:"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Text="{Binding MinPrice}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Slider x:Name="LowerSlider" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Minimum="{Binding MinPrice, Mode=TwoWay}" Maximum="{Binding MaxValuePrice, Mode=TwoWay}" Value="{Binding MinValuePrice, Mode=TwoWay}"/>
+            <Slider x:Name="UpperSlider" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Minimum="{Binding MinValuePrice, Mode=TwoWay}" Maximum="{Binding MaxPrice, Mode=TwoWay}" Value="{Binding MaxValuePrice, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Text="{Binding MaxPrice}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Min:" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding MinValuePrice}"/>
+            <TextBlock Grid.Column="3" Grid.Row="3" Text="Max:" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Column="4" Grid.Row="3" Text="{Binding MaxValuePrice}"/>
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Column="0" Grid.Row="0" IsChecked="{Binding MontantChargeMinChecked, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" Text="Montant charge min: "/>
+            <TextBox Grid.Column="2" Grid.Row="0" >
+                <TextBox.Text>
+                    <Binding Path="MontantChargeMin" StringFormat="{}{0:0.00}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                </TextBox.Text>
+            </TextBox>
+            <CheckBox Grid.Column="0" Grid.Row="1" IsChecked="{Binding MontantChargeMaxChecked, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="1" Grid.Row="1"  Text="Montant charge max: "/>
+            <TextBox Grid.Column="2" Grid.Row="1" >
+                <TextBox.Text>
+                    <Binding Path="MontantChargeMax" StringFormat="{}{0:0.00}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Button Grid.Column="7" Grid.Row="5" Content="Filtrer" Command="{Binding OnBtFilterCommand}"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="6" Text="{Binding MessageErreur,Mode=TwoWay }" Foreground="{Binding MessageErreurColor}"></TextBlock>
 
     </Grid>
 </Window>
