@@ -59,7 +59,17 @@ namespace ClientWPF.ViewModel
         {
             get { return (BitmapImage)GetField(); }
             set{ SetField(value); }
-            
+        }
+
+        public bool AfficherBouton
+        {
+            get
+            {
+                if (GetField() == null)
+                    return false;
+                return (bool) GetField();
+            }
+            set { SetField(value); }
         }
 
         private int IndexImage = 0;
@@ -105,6 +115,8 @@ namespace ClientWPF.ViewModel
         #region FonctionCommand
         private void Launch(EventBindingArgs<EventArgs> args)
         {
+            //todo cod pour launch   
+            this.AfficherBouton = false;
             this.TextSelectionne = null;
             Charger();
 
@@ -224,6 +236,8 @@ namespace ClientWPF.ViewModel
             {
                 SelectedItem = client.LireDetailsBienImmobilier(SelectedItemBase.Id.ToString()).Bien;
                 Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0 ? Base64ToImage(SelectedItem.PhotosBase64[0]) : GetDefaultImage();
+                if (SelectedItem.PhotosBase64 != null) AfficherBouton = SelectedItem.PhotosBase64.Count > 1;
+                else AfficherBouton = false;
             }
         }
 
