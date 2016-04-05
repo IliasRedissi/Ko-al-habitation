@@ -9,6 +9,7 @@
         vm:EventBinding.EventName="Loaded"
         vm:EventBinding.Command="{Binding LaunchCommand}">
     <Window.Resources>
+        <clientWpf:BoolToVisibilityConverter x:Key="simpleConverter" />
         <Style x:Key="Titre" TargetType="TextBlock">
             <Setter Property="TextTrimming" Value="None" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -99,8 +100,8 @@
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="&lt;" Grid.Column="1" Command="{Binding OnClickPrecCommand}"></Button>
-                        <Button Content="&gt;" Grid.Column="2" Command="{Binding OnClickSuivCommand}"></Button>
+                        <Button Content="&lt;" Grid.Column="1" Command="{Binding OnClickPrecCommand}" Visibility="{Binding AfficherBouton, Converter={StaticResource simpleConverter}}"></Button>
+                        <Button Content="&gt;" Grid.Column="2" Command="{Binding OnClickSuivCommand}" Visibility="{Binding AfficherBouton, Converter={StaticResource simpleConverter}}"></Button>
                     </Grid>
                     <Grid Grid.RowSpan="1" Grid.Row="2">
                         <Grid.ColumnDefinitions>
