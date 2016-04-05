@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <None Include="Service References\ServiceAgence\Agence.disco" />
+    <Content Include="res\delete.svg" />
     <Content Include="res\koalaIsLife.jpg" />
     <Content Include="res\noImage.jpg" />
     <Content Include="Service References\ServiceAgence\ClientWeb.ServiceAgence.ResultatBienImmobilier.datasource">

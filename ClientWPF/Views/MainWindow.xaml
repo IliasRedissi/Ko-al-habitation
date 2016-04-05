@@ -4,6 +4,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:vm="clr-namespace:ClientWPF.ViewModel"
+        xmlns:clientWpf="clr-namespace:ClientWPF"
         Title="Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen"
         vm:EventBinding.EventName="Loaded"
@@ -54,32 +55,42 @@
                 <ListBox  Grid.Row="1"  Grid.ColumnSpan="2" DockPanel.Dock="Bottom" SelectedItem="{Binding SelectedItemBase}" ItemsSource="{Binding BienImmobiliers, Mode=TwoWay}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Nom :" Style="{StaticResource Titre}" />
-                                    <TextBlock Text="{Binding Titre}" />
-                                </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/ClientWPF;component/res/delete.png" Grid.Column="2" HorizontalAlignment="Right"></Image>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Nom :" Style="{StaticResource Titre}" />
+                                        <TextBlock Text="{Binding Titre}" />
+                                    </StackPanel>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Prix :" Style="{StaticResource Titre}" />
-                                    <TextBlock Text="{Binding Prix}" />
-                                </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Prix :" Style="{StaticResource Titre}" />
+                                        <TextBlock Text="{Binding Prix}" />
+                                    </StackPanel>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="CodePostal :" Style="{StaticResource Titre}" />
-                                    <TextBlock Text="{Binding CodePostal}" />
-                                </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="CodePostal :" Style="{StaticResource Titre}" />
+                                        <TextBlock Text="{Binding CodePostal}" />
+                                    </StackPanel>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Ville :" Style="{StaticResource Titre}" />
-                                    <TextBlock Text="{Binding Ville}" />
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Ville :" Style="{StaticResource Titre}" />
+                                        <TextBlock Text="{Binding Ville}" />
+                                    </StackPanel>
+
                                 </StackPanel>
-                            </StackPanel>
+                            </Grid>
+                            
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
-                            
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         </Style>
                     </ListBox.ItemContainerStyle>
                 </ListBox>
