@@ -53,6 +53,8 @@ namespace ClientWPF.ViewModel
             get { return GetField() != null ? (string)GetField() : "Aucun"; }
             set { SetField(value); }
         }
+
+        #region Montant charge
         public Double MontantChargeMin
         {
             get { return GetField() != null ? (Double)GetField() : 0; }
@@ -73,6 +75,100 @@ namespace ClientWPF.ViewModel
             get { return GetField() != null && (bool)GetField(); }
             set { SetField(value); }
         }
+
+        #endregion
+        #region Surface
+        public Double SurfaceMin
+        {
+            get { return GetField() != null ? (Double)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public Double SurfaceMax
+        {
+            get { return GetField() != null ? (Double)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public bool SurfaceMinChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+        public bool SurfaceMaxChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+
+        #endregion
+        #region num etage
+        public int NumEtageMin
+        {
+            get { return GetField() != null ? (int)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public int NumEtageMax
+        {
+            get { return GetField() != null ? (int)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public bool NumEtageMinChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+        public bool NumEtageMaxChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+
+        #endregion
+        #region nombre etage
+        public int NbEtageMin
+        {
+            get { return GetField() != null ? (int)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public int NbEtageMax
+        {
+            get { return GetField() != null ? (int)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public bool NbEtageMinChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+        public bool NbEtageMaxChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+
+        #endregion
+        #region Nombre Piece
+        public int NbPieceMin
+        {
+            get { return GetField() != null ? (int)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public int NbPieceMax
+        {
+            get { return GetField() != null ? (int)GetField() : 0; }
+            set { SetField(value); }
+        }
+        public bool NbPieceMinChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+        public bool NbPieceMaxChecked
+        {
+            get { return GetField() != null && (bool)GetField(); }
+            set { SetField(value); }
+        }
+
+        #endregion
         public string MessageErreur
         {
 
@@ -114,8 +210,8 @@ namespace ClientWPF.ViewModel
 
         public GenericBaseCommand<Window> FilterCommand
         {
-            get { return new GenericBaseCommand<Window>(Filtrer);}
-        } 
+            get { return new GenericBaseCommand<Window>(Filtrer); }
+        }
 
         #endregion
 
@@ -187,6 +283,23 @@ namespace ClientWPF.ViewModel
             {
                 MessageErreur = "Le montant charge Minimum est plus élevé que le montant charge Maximum";
             }
+            else if (SurfaceMin > SurfaceMax && SurfaceMaxChecked && SurfaceMinChecked)
+            {
+                MessageErreur = "La surface Minimum est plus élevé que la surface Maximum";
+
+            }
+            else if (NumEtageMin > NumEtageMax && NumEtageMinChecked && NumEtageMaxChecked)
+            {
+                MessageErreur = "Le numéro d'étage Minimum est plus élevé que le numéro Maximum";
+            }
+            else if (NbEtageMin > NbEtageMax && NbEtageMinChecked && NbEtageMaxChecked)
+            {
+                MessageErreur = "Le nombre d'étage Minimum est plus élevé que le nombre Maximum";
+            }
+            else if (NbPieceMin > NbPieceMax && NbPieceMinChecked && NbPieceMaxChecked)
+            {
+                MessageErreur = "Le nombre de pièce Minimum est plus élevé que le nombre Maximum";
+            }
             else
             {
                 Criteres = new CriteresRechercheBiensImmobiliers
@@ -198,16 +311,16 @@ namespace ClientWPF.ViewModel
                     EnergieChauffage = null,
                     MontantCharges1 = MontantChargeMinChecked ? MontantChargeMin : -1,
                     MontantCharges2 = MontantChargeMaxChecked ? MontantChargeMax : -1,
-                    NbEtages1 = -1,
-                    NbEtages2 = -1,
-                    NbPieces1 = -1,
-                    NbPieces2 = -1,
-                    NumEtage1 = -1,
-                    NumEtage2 = -1,
-                    Prix1 = -1,
-                    Prix2 = -1,
-                    Surface1 = -1,
-                    Surface2 = -1,
+                    NbEtages1 = NbEtageMinChecked ? NbEtageMin : -1,
+                    NbEtages2 = NbEtageMaxChecked ? NbEtageMax : -1,
+                    NbPieces1 = NbPieceMinChecked ? NbPieceMin : -1,
+                    NbPieces2 = NbPieceMaxChecked ? NbPieceMax : -1,
+                    NumEtage1 = NumEtageMinChecked ? NumEtageMin : -1,
+                    NumEtage2 = NumEtageMaxChecked ? NumEtageMax : -1,
+                    Prix1 = MinValuePrice,
+                    Prix2 = MaxValuePrice,
+                    Surface1 = SurfaceMinChecked ? SurfaceMin : -1,
+                    Surface2 = SurfaceMaxChecked ? SurfaceMax : -1,
                     TransactionEffectuee = false,
                     TypeBien = ConvertTypeBien(SelectedTypeBien),
                     TypeChauffage = ConvertTypeChauffage(SelectedTypeChauffage),
