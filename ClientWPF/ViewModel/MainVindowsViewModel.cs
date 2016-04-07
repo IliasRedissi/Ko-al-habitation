@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using ClientWPF.Models;
 using ClientWPF.ServiceAgence;
+using ClientWPF.Views;
 using Template_ListBox;
 
 namespace ClientWPF.ViewModel
@@ -94,6 +95,11 @@ namespace ClientWPF.ViewModel
         {
             get { return new BaseCommand(MenuItem_OnClickRestartFilter); }
         }
+        public BaseCommand OnClickAddBienCommand
+        {
+            get { return new BaseCommand(MenuItem_OnClickAddBien); }
+        }
+
 
         public BaseCommand OnClickPrecCommand
         {
@@ -117,32 +123,7 @@ namespace ClientWPF.ViewModel
             //todo cod pour launch   
             this.AfficherBouton = false;
             this.TextSelectionne = null;
-            this.TextSearch = "Name";
-            CriteresRechercheBiensImmobiliers criteres = new CriteresRechercheBiensImmobiliers
-            {
-                DateMiseEnTransaction1 = null,
-                DateMiseEnTransaction2 = null,
-                DateTransaction1 = null,
-                DateTransaction2 = null,
-                EnergieChauffage = null,
-                MontantCharges1 = -1,
-                MontantCharges2 = -1,
-                NbEtages1 = -1,
-                NbEtages2 = -1,
-                NbPieces1 = -1,
-                NbPieces2 = -1,
-                NumEtage1 = -1,
-                NumEtage2 = -1,
-                Prix1 = -1,
-                Prix2 = -1,
-                Surface1 = -1,
-                Surface2 = -1,
-                TransactionEffectuee = false,
-                TypeBien = null,
-                TypeChauffage = null,
-                TypeTransaction = null,
-            };
-            Charger(criteres);
+            Charger();
 
         }
 
@@ -184,39 +165,23 @@ namespace ClientWPF.ViewModel
             //filter.Owner = this;
             if (filter.ShowDialog() == true)
             {
-                Charger(((FilterViewModel)filter.DataContext).Criteres);
+                
             }
-            
+            Charger(((FilterViewModel)filter.DataContext).Criteres);
             //this.Close();
+        }
+        private void MenuItem_OnClickAddBien()
+        {
+            NewBien filter = new NewBien();
+            if (filter.ShowDialog() == true)
+            {
+
+            }
+            Charger();
         }
         private void MenuItem_OnClickRestartFilter()
         {
-            this.TextSearch = "";
-            CriteresRechercheBiensImmobiliers criteres = new CriteresRechercheBiensImmobiliers
-            {
-                DateMiseEnTransaction1 = null,
-                DateMiseEnTransaction2 = null,
-                DateTransaction1 = null,
-                DateTransaction2 = null,
-                EnergieChauffage = null,
-                MontantCharges1 = -1,
-                MontantCharges2 = -1,
-                NbEtages1 = -1,
-                NbEtages2 = -1,
-                NbPieces1 = -1,
-                NbPieces2 = -1,
-                NumEtage1 = -1,
-                NumEtage2 = -1,
-                Prix1 = -1,
-                Prix2 = -1,
-                Surface1 = -1,
-                Surface2 = -1,
-                TransactionEffectuee = false,
-                TypeBien = null,
-                TypeChauffage = null,
-                TypeTransaction = null,
-            };
-            Charger(criteres);
+            Charger();
         }
 
         private void Prec_OnClick()
@@ -236,7 +201,7 @@ namespace ClientWPF.ViewModel
 
         #endregion
 
-        public void Charger(CriteresRechercheBiensImmobiliers criteres)
+        public void Charger(CriteresRechercheBiensImmobiliers criteres = null)
         {
             if (criteres == null)
             {

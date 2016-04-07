@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ClientWPF.Models;
 using Template_ListBox;
 using ClientWPF.ServiceAgence;
@@ -77,11 +78,6 @@ namespace ClientWPF.ViewModel
 
             get { return GetField() != null ? (string)GetField() : ""; }
             set { SetField(value); }
-        }public string MessageErreurColor
-        {
-
-            get { return GetField() != null ? (string)GetField() : "Red"; }
-            set { SetField(value); }
         }
 
         #region Price
@@ -116,10 +112,10 @@ namespace ClientWPF.ViewModel
             get { return new EventBindingCommand<EventArgs>(Launch); }
         }
 
-        public BaseCommand OnBtFilterCommand
+        public GenericBaseCommand<Window> FilterCommand
         {
-            get { return new BaseCommand(OnBtFilter); }
-        }
+            get { return new GenericBaseCommand<Window>(Filtrer);}
+        } 
 
         #endregion
 
@@ -165,8 +161,6 @@ namespace ClientWPF.ViewModel
                 MinValuePrice = (int)bienImmobiliers.Min(b => b.Prix);
                 MaxValuePrice = (int)bienImmobiliers.Max(b => b.Prix);
             }
-            MontantChargeMin = 0;
-            MontantChargeMax = 0;
 
             ListTransactions = new ObservableCollection<string>();
             ListTransactions.Add("Tous");
@@ -187,12 +181,11 @@ namespace ClientWPF.ViewModel
 
         }
 
-        private void OnBtFilter()
+        private void Filtrer(Window win)
         {
             if (MontantChargeMin > MontantChargeMax && MontantChargeMaxChecked && MontantChargeMinChecked)
             {
                 MessageErreur = "Le montant charge Minimum est plus élevé que le montant charge Maximum";
-                MessageErreurColor = "Red";
             }
             else
             {
@@ -203,8 +196,8 @@ namespace ClientWPF.ViewModel
                     DateTransaction1 = null,
                     DateTransaction2 = null,
                     EnergieChauffage = null,
-                    MontantCharges1 = MontantChargeMinChecked? MontantChargeMin :-1,
-                    MontantCharges2 = MontantChargeMaxChecked? MontantChargeMax: -1,
+                    MontantCharges1 = MontantChargeMinChecked ? MontantChargeMin : -1,
+                    MontantCharges2 = MontantChargeMaxChecked ? MontantChargeMax : -1,
                     NbEtages1 = -1,
                     NbEtages2 = -1,
                     NbPieces1 = -1,
@@ -220,15 +213,20 @@ namespace ClientWPF.ViewModel
                     TypeChauffage = ConvertTypeChauffage(SelectedTypeChauffage),
                     TypeTransaction = ConvertTransaction(SelectedTypeTransaction),
                 };
-                MessageErreur = "Votre filtre a été accapté";
-                MessageErreurColor = "Green";
+                if (win != null)
+                {
+                    win.Close();
+                }
+                else
+                {
+                    MessageErreur = "Probleme de fermeture de la fenetre";
+                }
             }
-
-
         }
 
-
         #endregion
+
+        #region Convert enum function
 
         private BienImmobilierBase.eTypeTransaction? ConvertTransaction(string transaction)
         {
@@ -278,5 +276,8 @@ namespace ClientWPF.ViewModel
             }
             return null;
         }
+
+
+        #endregion
     }
 }
