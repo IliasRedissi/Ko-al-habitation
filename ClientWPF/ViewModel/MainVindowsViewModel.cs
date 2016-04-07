@@ -318,7 +318,6 @@ namespace ClientWPF.ViewModel
             if (base64String != "")
             {
                 byte[] binaryData = Convert.FromBase64String(base64String);
-
                 BitmapImage bi = new BitmapImage();
                 bi.BeginInit();
                 bi.StreamSource = new MemoryStream(binaryData);
