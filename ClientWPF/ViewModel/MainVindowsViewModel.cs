@@ -104,6 +104,11 @@ namespace ClientWPF.ViewModel
             get { return new BaseCommand(Suiv_OnClick); }
         }
 
+        public BaseCommand OnClickDeleteCommand
+        {
+            get { return new BaseCommand(Delete_OnClick);}
+        }
+
         #endregion
 
         #region FonctionCommand
@@ -224,6 +229,11 @@ namespace ClientWPF.ViewModel
             ImageSuiv();
         }
 
+        private void Delete_OnClick()
+        {
+            DeleteBien();
+        }
+
         #endregion
 
         public void Charger(CriteresRechercheBiensImmobiliers criteres)
@@ -269,10 +279,25 @@ namespace ClientWPF.ViewModel
             //ToDO Affichage de l'image
             using (var client = new AgenceClient())
             {
-                SelectedItem = client.LireDetailsBienImmobilier(SelectedItemBase.Id.ToString()).Bien;
-                Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0 ? Base64ToImage(SelectedItem.PhotosBase64[0]) : GetDefaultImage();
-                if (SelectedItem.PhotosBase64 != null) AfficherBouton = SelectedItem.PhotosBase64.Count > 1;
-                else AfficherBouton = false;
+                if (SelectedItemBase == null)
+                {
+                    clearDisplay();
+                    return;
+                };
+                var lireDetailsBienImmobilier = client.LireDetailsBienImmobilier(SelectedItemBase.Id.ToString());
+                if (lireDetailsBienImmobilier != null)
+                {
+                    SelectedItem = lireDetailsBienImmobilier.Bien;
+                    Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0
+                        ? Base64ToImage(SelectedItem.PhotosBase64[0])
+                        : GetDefaultImage();
+                    if (SelectedItem.PhotosBase64 != null) AfficherBouton = SelectedItem.PhotosBase64.Count > 1;
+                    else AfficherBouton = false;
+                }
+                else
+                {
+                    clearDisplay();
+                }
             }
         }
 
@@ -298,6 +323,29 @@ namespace ClientWPF.ViewModel
                     IndexImage++;
                 Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0 ? Base64ToImage(SelectedItem.PhotosBase64[IndexImage]) : GetDefaultImage();
             }
+        }
+
+        private void DeleteBien()
+        {
+            using (ServiceAgence.AgenceClient client = new ServiceAgence.AgenceClient())
+            {
+                if (SelectedItemBase == null) return;
+                ServiceAgence.ResultatBool r = client.SupprimerBienImmobilier(SelectedItemBase.Id.ToString());
+                BienImmobiliers.Remove(SelectedItemBase);
+                clearDisplay();
+                if (!r.SuccesExecution)
+                {
+                    
+                }
+            }
+        }
+
+        private void clearDisplay()
+        {
+            SelectedItemBase = null;
+            SelectedItem = null;
+            AfficherBouton = false;
+            Image = null;
         }
 
         public BitmapImage Base64ToImage(string base64String)

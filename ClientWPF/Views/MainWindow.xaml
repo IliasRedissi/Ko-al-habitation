@@ -4,11 +4,13 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:vm="clr-namespace:ClientWPF.ViewModel"
-        xmlns:clientWpf="clr-namespace:ClientWPF"
+        xmlns:clientWpf="clr-namespace:ClientWPF" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         Title="Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen"
         vm:EventBinding.EventName="Loaded"
-        vm:EventBinding.Command="{Binding LaunchCommand}">
+        vm:EventBinding.Command="{Binding LaunchCommand}"
+        x:Name="window">
     <Window.Resources>
         <clientWpf:BoolToVisibilityConverter x:Key="simpleConverter" />
         <Style x:Key="Titre" TargetType="TextBlock">
@@ -16,6 +18,10 @@
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Margin" Value="0,0,5,0" />
             <Setter Property="TextAlignment" Value="Right" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#00ffffff"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
         </Style>
         <ObjectDataProvider x:Key="TransactionTypeProvider"
                             MethodName="GetValues"
@@ -51,7 +57,9 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="TxtSearchName" TextWrapping="Wrap" Text="{Binding TextSearch, Mode=TwoWay}" VerticalAlignment="Top"/>
-                <Button x:Name="BtSearch" Grid.Column="1" Content="Search" Width="75" HorizontalAlignment="Right" Command="{Binding OnClickSearchCommand}"/>
+                <Button x:Name="BtSearch" Grid.Column="1" Width="75" HorizontalAlignment="Right" Command="{Binding OnClickSearchCommand}">
+                    <Image Source="/ClientWPF;component/res/search.png" MaxHeight="15"></Image>    
+                </Button>
                 <ListBox  Grid.Row="1"  Grid.ColumnSpan="2" DockPanel.Dock="Bottom" SelectedItem="{Binding SelectedItemBase}" ItemsSource="{Binding BienImmobiliers, Mode=TwoWay}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -60,8 +68,14 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Image Source="/ClientWPF;component/res/delete.png" Grid.Column="2" HorizontalAlignment="Right"></Image>
+                                <Button Grid.Column="2">
+                                    <Image Source="/ClientWPF;component/res/edit.png" HorizontalAlignment="Right"></Image>
+                                </Button>
+                                <Button Grid.Column="3" DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClickDeleteCommand}">
+                                    <Image Source="/ClientWPF;component/res/delete.png" HorizontalAlignment="Right"></Image>
+                                </Button>
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Nom :" Style="{StaticResource Titre}" />
