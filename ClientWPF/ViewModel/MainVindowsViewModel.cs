@@ -82,6 +82,10 @@ namespace ClientWPF.ViewModel
         {
             get { return new EventBindingCommand<EventArgs>(Launch); }
         }
+        public EventBindingCommand<EventArgs> LoadImageCommand
+        {
+            get { return new EventBindingCommand<EventArgs>(LoadImage); }
+        }
 
         public BaseCommand OnClickSearchCommand
         {
@@ -237,6 +241,11 @@ namespace ClientWPF.ViewModel
 
                 BienImmobiliers = resultat.SuccesExecution ? resultat.Liste.List : new ObservableCollection<BienImmobilierBase>();
             }
+        }
+
+        public void LoadImage(EventBindingArgs<EventArgs> eventBindingArgs)
+        {
+            
         }
 
         private void ShowImmoDesc()

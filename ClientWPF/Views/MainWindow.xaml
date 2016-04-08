@@ -5,7 +5,9 @@
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:vm="clr-namespace:ClientWPF.ViewModel"
         xmlns:clientWpf="clr-namespace:ClientWPF" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converter="clr-namespace:ClientWPF.Converter"
+        mc:Ignorable="d"
         Title="Gestion de biens immobiliers"
         WindowStartupLocation="CenterScreen"
         vm:EventBinding.EventName="Loaded"
@@ -13,6 +15,7 @@
         x:Name="window">
     <Window.Resources>
         <clientWpf:BoolToVisibilityConverter x:Key="simpleConverter" />
+        <converter:ConverterBase64ToImage x:Key="Base64ToImageConverter" />
         <Style x:Key="Titre" TargetType="TextBlock">
             <Setter Property="TextTrimming" Value="None" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -47,7 +50,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1.5*" />
             </Grid.ColumnDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
@@ -68,14 +71,16 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="2">
+                                <Image Width="60" Height="60"  Source="{Binding PhotoPrincipaleBase64, Converter={StaticResource Base64ToImageConverter}}" Stretch="Fill" />
+                                <Button Grid.Column="3">
                                     <Image Source="/ClientWPF;component/res/edit.png" HorizontalAlignment="Right"></Image>
                                 </Button>
-                                <ToggleButton Grid.Column="3" DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClickDeleteCommand}">
+                                <ToggleButton Grid.Column="4" DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClickDeleteCommand}">
                                     <ToggleButton.Style>
                                         <Style TargetType="ToggleButton">
                                             <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
@@ -83,27 +88,23 @@
                                     </ToggleButton.Style>
                                     <Image Source="/ClientWPF;component/res/delete.png" HorizontalAlignment="Right"></Image>
                                 </ToggleButton>
-                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <StackPanel Grid.Column="1" Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Nom :" Style="{StaticResource Titre}" />
                                         <TextBlock Text="{Binding Titre}" />
                                     </StackPanel>
-
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Prix :" Style="{StaticResource Titre}" />
                                         <TextBlock Text="{Binding Prix}" />
                                     </StackPanel>
-
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="CodePostal :" Style="{StaticResource Titre}" />
                                         <TextBlock Text="{Binding CodePostal}" />
                                     </StackPanel>
-
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Ville :" Style="{StaticResource Titre}" />
                                         <TextBlock Text="{Binding Ville}" />
                                     </StackPanel>
-
                                 </StackPanel>
                             </Grid>
                             
