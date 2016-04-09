@@ -85,7 +85,7 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <ToggleButton Grid.Column="2">
+                                <ToggleButton Grid.Column="2"  DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClicEditCommand}">
                                     <ToggleButton.Style>
                                         <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
                                             <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
