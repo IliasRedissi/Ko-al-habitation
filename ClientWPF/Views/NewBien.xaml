@@ -9,8 +9,6 @@
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        vm:EventBinding.EventName="Loaded"
-        vm:EventBinding.Command="{Binding LaunchCommand}"
         Title="Bien" Height="300" Width="400">
     <Window.DataContext>
         <vm:NewBienViewModel/>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,7 @@ namespace ClientWPF.ViewModel
                     bien.TypeChauffage = BienImmobilierBase.eTypeChauffage.Aucun;
                     bien.TypeBien = BienImmobilierBase.eTypeBien.Appartement;
                     bien.TypeTransaction = BienImmobilierBase.eTypeTransaction.Vente;
+                    bien.DateMiseEnTransaction = DateTime.Now;
                     SetField(bien);
                     return bien;
                 }
@@ -65,11 +67,6 @@ namespace ClientWPF.ViewModel
         public BaseCommand UploadCommand
         {
             get { return new BaseCommand(Upload); }
-        }
-
-        public EventBindingCommand<EventArgs> LaunchCommand
-        {
-            get { return new EventBindingCommand<EventArgs>(Launch); }
         }
 
         #endregion
@@ -145,11 +142,6 @@ namespace ClientWPF.ViewModel
                 }
 
             }
-        }
-
-        private void Launch(EventBindingArgs<EventArgs> args)
-        {
-            //todo cod pour launch   
         }
 
         #endregion
