@@ -72,6 +72,17 @@ namespace ClientWPF.ViewModel
             set { SetField(value); }
         }
 
+        public bool AfficherDesc
+        {
+            get
+            {
+                if (GetField() == null)
+                    return false;
+                return (bool) GetField();
+            }
+            set { SetField(value); }
+        }
+
         private int IndexImage = 0;
 
         #endregion
@@ -126,6 +137,7 @@ namespace ClientWPF.ViewModel
         {
             //todo cod pour launch   
             this.AfficherBouton = false;
+            this.AfficherDesc = false;
             this.TextSelectionne = null;
             Charger();
 
@@ -265,6 +277,7 @@ namespace ClientWPF.ViewModel
                     Image = SelectedItem.PhotosBase64 != null && SelectedItem.PhotosBase64.Count > 0
                         ? Base64ToImage(SelectedItem.PhotosBase64[0])
                         : GetDefaultImage();
+                    AfficherDesc = true;
                     if (SelectedItem.PhotosBase64 != null) AfficherBouton = SelectedItem.PhotosBase64.Count > 1;
                     else AfficherBouton = false;
                 }
@@ -319,6 +332,7 @@ namespace ClientWPF.ViewModel
             SelectedItemBase = null;
             SelectedItem = null;
             AfficherBouton = false;
+            AfficherDesc = false;
             Image = null;
         }
 
