@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -129,6 +130,7 @@ namespace ClientWPF.ViewModel
                 bien.TypeTransaction = SelectedTypeTransaction;
                 bien.TypeChauffage = SelectedTypeChauffage;
                 bien.EnergieChauffage = SelectedEnergieChauffage;
+                bien.DateMiseEnTransaction = DateTime.Now; ;
                 if (ImageBase64 != null)
                 {
                     bien.PhotosBase64 = ImageBase64;

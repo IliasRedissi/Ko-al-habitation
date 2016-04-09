@@ -87,25 +87,26 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Image Width="60" Height="60"  Source="{Binding PhotoPrincipaleBase64, Converter={StaticResource Base64ToImageConverter}}" Stretch="Fill" />
-                                <ToggleButton Grid.Column="2">
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
-                                            <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
-                                        </Style>
-                                    </ToggleButton.Style>
-                                    <Image Source="/ClientWPF;component/res/edit.png" HorizontalAlignment="Right"></Image>
-                                </ToggleButton>
-                                <ToggleButton Grid.Column="3" DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClickDeleteCommand}">
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
-                                            <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
-                                        </Style>
-                                    </ToggleButton.Style>
-                                    <Image Source="/ClientWPF;component/res/delete.png" HorizontalAlignment="Right"></Image>
-                                </ToggleButton>
+                                <StackPanel Orientation="Horizontal" Grid.Column="3">
+                                    <ToggleButton >
+                                        <ToggleButton.Style>
+                                            <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
+                                                <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
+                                            </Style>
+                                        </ToggleButton.Style>
+                                        <Image Source="/ClientWPF;component/res/edit.png" HorizontalAlignment="Right"></Image>
+                                    </ToggleButton>
+                                    <ToggleButton DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClickDeleteCommand}">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
+                                                <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
+                                            </Style>
+                                        </ToggleButton.Style>
+                                        <Image Source="/ClientWPF;component/res/delete.png" HorizontalAlignment="Right"></Image>
+                                    </ToggleButton>
+                                </StackPanel>
                                 <StackPanel Grid.Column="1" Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="Nom :" Style="{StaticResource Titre}" />
