@@ -14,8 +14,9 @@
         vm:EventBinding.Command="{Binding LaunchCommand}"
         x:Name="window">
     <Window.Resources>
-        <clientWpf:BoolToVisibilityConverter x:Key="simpleConverter" />
+        <converter:BoolToVisibilityConverter x:Key="simpleConverter" />
         <converter:ConverterBase64ToImage x:Key="Base64ToImageConverter" />
+        <converter:ConverterBoolToString x:Key="BoolToStringConverter" />
         <Style x:Key="Titre" TargetType="TextBlock">
             <Setter Property="TextTrimming" Value="None" />
             <Setter Property="FontWeight" Value="Bold" />
@@ -189,7 +190,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Transaction effectué : "></TextBlock>
-                                <TextBlock Text="{Binding SelectedItem.TransactionEffectuee}"></TextBlock>
+                                <TextBlock Text="{Binding SelectedItem.TransactionEffectuee, Converter={StaticResource BoolToStringConverter}}"></TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Date de la transaction : "></TextBlock>

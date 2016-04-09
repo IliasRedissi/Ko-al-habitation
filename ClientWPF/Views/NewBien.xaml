@@ -59,7 +59,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
@@ -91,16 +93,20 @@
         </TextBox>
         <TextBlock Grid.Column="1" Grid.Row="5" Text="Ville:"/>
         <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding Ville}"/>
-        <Image x:Name="image" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="{Binding Image,Mode=TwoWay}"/>
+        <Image x:Name="image" Grid.Column="4" Grid.Row="7" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="{Binding Image,Mode=TwoWay}"/>
+        <TextBlock Grid.Column="3" Grid.Row="5" Text="Adresse:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="4" Grid.Row="5" Text="{Binding Adresse}"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Description:"/>
+        <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Text="{Binding Description}" TextWrapping="Wrap" AcceptsReturn="True"/>
         
         <ComboBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TransactionTypeProvider} }" SelectedValue="{Binding SelectedTypeTransaction}"/>
         <ComboBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TypeBienTypeProvider} }" SelectedValue="{Binding SelectedTypeBien}"/>
         <ComboBox Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource EnergieChauffageTypeProvider} }" SelectedValue="{Binding SelectedEnergieChauffage}"/>
         <ComboBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TypeChauffageTypeProvider} }" SelectedValue="{Binding SelectedTypeChauffage}"/>
-        <Button Grid.Column="1" Grid.Row="7" Content="Upload" Command="{Binding UploadCommand}"/>
+        <Button Grid.Column="1" Grid.Row="9" Content="Upload" Command="{Binding UploadCommand}"/>
         
-        <Button Grid.Column="4" Grid.Row="7" Content="Ajouter" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=WindowNewBien}"/>
-        <TextBlock Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" Text="{Binding MessageErreur,Mode=TwoWay }" Foreground="Red"></TextBlock>
+        <Button Grid.Column="4" Grid.Row="9" Content="Ajouter" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=WindowNewBien}"/>
+        <TextBlock Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2" Text="{Binding MessageErreur,Mode=TwoWay }" Foreground="Red"></TextBlock>
         
 
     </Grid>

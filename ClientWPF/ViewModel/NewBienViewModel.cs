@@ -77,6 +77,16 @@ namespace ClientWPF.ViewModel
             get { return (string)GetField(); }
             set { SetField(value); }
         }
+
+        public string Description
+        {
+            get { return GetField()!=null?(string)GetField():"votre description"; }
+            set { SetField(value); }
+        }public string Adresse
+        {
+            get { return (string)GetField(); }
+            set { SetField(value); }
+        }
         public BitmapImage Image
         {
             get { return (BitmapImage)GetField(); }
@@ -130,7 +140,9 @@ namespace ClientWPF.ViewModel
                 bien.TypeTransaction = SelectedTypeTransaction;
                 bien.TypeChauffage = SelectedTypeChauffage;
                 bien.EnergieChauffage = SelectedEnergieChauffage;
-                bien.DateMiseEnTransaction = DateTime.Now; ;
+                bien.DateMiseEnTransaction = DateTime.Now;
+                bien.Adresse = Adresse;
+                bien.Description = Description;
                 if (ImageBase64 != null)
                 {
                     bien.PhotosBase64 = ImageBase64;
