@@ -91,7 +91,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Width="60" Height="60"  Source="{Binding PhotoPrincipaleBase64, Converter={StaticResource Base64ToImageConverter}}" Stretch="Fill" />
                                 <StackPanel Orientation="Horizontal" Grid.Column="3">
-                                    <ToggleButton >
+                                    <ToggleButton DataContext="{Binding DataContext ,ElementName=window}" Command="{Binding OnClicEditCommand}" >
                                         <ToggleButton.Style>
                                             <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
                                                 <Setter Property="IsChecked" Value="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />

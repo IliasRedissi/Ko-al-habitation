@@ -17,85 +17,13 @@ using Template_ListBox;
 
 namespace ClientWPF.ViewModel
 {
-    class NewBienViewModel : BaseNotifyPropertyChanged
+    class NewBienViewModel : BaseNotifyPropertyChanged, IEntityViewModel<BienImmobilier>
     {
 
         #region Propriété
-
-        #region Enum
-        public BienImmobilierBase.eTypeTransaction SelectedTypeTransaction
-        {
-
-            get { return GetField() != null ? (BienImmobilierBase.eTypeTransaction)GetField() : BienImmobilierBase.eTypeTransaction.Vente; }
-            set { SetField(value); }
-        }
-        public BienImmobilierBase.eTypeBien SelectedTypeBien
-        {
-
-            get { return GetField() != null ? (BienImmobilierBase.eTypeBien)GetField() : BienImmobilierBase.eTypeBien.Appartement; }
-            set { SetField(value); }
-        }
-        public BienImmobilierBase.eTypeChauffage SelectedTypeChauffage
-        {
-
-            get { return GetField() != null ? (BienImmobilierBase.eTypeChauffage)GetField() : BienImmobilierBase.eTypeChauffage.Aucun; }
-            set { SetField(value); }
-        }
-        public BienImmobilierBase.eEnergieChauffage SelectedEnergieChauffage
-        {
-
-            get { return GetField() != null ? (BienImmobilierBase.eEnergieChauffage)GetField() : BienImmobilierBase.eEnergieChauffage.Bois; }
-            set { SetField(value); }
-        }
-
-        #endregion
-
-        public string Title
-        {
-            get { return (string)GetField(); }
-            set { SetField(value); }
-        }
-
-        public Double Price
-        {
-            get { return GetField() != null ? (Double)GetField() : 0; }
-            set { SetField(value); }
-        }
-        public Double MontantCharge
-        {
-            get { return GetField() != null ? (Double)GetField() : 0; }
-            set { SetField(value); }
-        }
-        public string CodePostal
-        {
-            get { return GetField() != null ? (string)GetField() : "01"; }
-            set { SetField(value); }
-        }
-
-        public string Ville
-        {
-            get { return (string)GetField(); }
-            set { SetField(value); }
-        }
-
-        public string Description
-        {
-            get { return GetField()!=null?(string)GetField():"votre description"; }
-            set { SetField(value); }
-        }public string Adresse
-        {
-            get { return (string)GetField(); }
-            set { SetField(value); }
-        }
         public BitmapImage Image
         {
             get { return (BitmapImage)GetField(); }
-            set { SetField(value); }
-        }
-        public ObservableCollection<string> ImageBase64
-        {
-
-            get { return (ObservableCollection<string>)GetField(); }
             set { SetField(value); }
         }
 
@@ -103,6 +31,29 @@ namespace ClientWPF.ViewModel
         {
 
             get { return GetField() != null ? (string)GetField() : ""; }
+            set { SetField(value); }
+        }
+
+        public BienImmobilier BienImmobilier
+        {
+            get {
+                if (GetField() == null)
+                {
+                    BienImmobilier bien = new BienImmobilier();
+
+                    bien.EnergieChauffage = BienImmobilierBase.eEnergieChauffage.Aucun;
+                    bien.TypeChauffage = BienImmobilierBase.eTypeChauffage.Aucun;
+                    bien.TypeBien = BienImmobilierBase.eTypeBien.Appartement;
+                    bien.TypeTransaction = BienImmobilierBase.eTypeTransaction.Vente;
+                    bien.DateMiseEnTransaction = DateTime.Now;
+                    SetField(bien);
+                    return bien;
+                }
+                else
+                {
+                    return (BienImmobilier) GetField();
+                }
+            }
             set { SetField(value); }
         }
 
@@ -124,40 +75,29 @@ namespace ClientWPF.ViewModel
 
         private void Add(Window win)
         {
-            if (String.IsNullOrEmpty(Title))
-                MessageErreur = "Veuillez renseigner un nom";
-            else if (String.IsNullOrEmpty(Ville))
-                MessageErreur = "Veuillez renseigner une ville";
-            else
+            if (BienImmobilier != null)
             {
-                BienImmobilier bien = new BienImmobilier();
-                bien.Titre = Title;
-                bien.Ville = Ville;
-                bien.Prix = Price;
-                bien.CodePostal = CodePostal;
-                bien.MontantCharges = MontantCharge;
-                bien.TypeBien = SelectedTypeBien;
-                bien.TypeTransaction = SelectedTypeTransaction;
-                bien.TypeChauffage = SelectedTypeChauffage;
-                bien.EnergieChauffage = SelectedEnergieChauffage;
-                bien.DateMiseEnTransaction = DateTime.Now;
-                bien.Adresse = Adresse;
-                bien.Description = Description;
-                if (ImageBase64 != null)
-                {
-                    bien.PhotosBase64 = ImageBase64;
-                }
-                using (var client = new AgenceClient())
-                {
-                    client.AjouterBienImmobilier(bien);
-                }
-                if (win != null)
-                {
-                    win.Close();
-                }
+                if (String.IsNullOrEmpty(BienImmobilier.Titre))
+                    MessageErreur = "Veuillez renseigner un nom";
+                else if (String.IsNullOrEmpty(BienImmobilier.Ville))
+                    MessageErreur = "Veuillez renseigner une ville";
                 else
                 {
-                    MessageErreur = "Probleme de fermeture de la fenetre";
+                    using (var client = new AgenceClient())
+                    {
+                        if (BienImmobilier.Id == 0)
+                            client.AjouterBienImmobilier(BienImmobilier);
+                        else
+                            client.ModifierBienImmobilier(BienImmobilier);
+                    }
+                    if (win != null)
+                    {
+                        win.Close();
+                    }
+                    else
+                    {
+                        MessageErreur = "Probleme de fermeture de la fenetre";
+                    }
                 }
             }
         }
@@ -192,13 +132,13 @@ namespace ClientWPF.ViewModel
                 encoder.Frames.Add(BitmapFrame.Create(no));
                 encoder.Save(ms);
                 byte[] bitmapdata = ms.ToArray();
-                if (ImageBase64 == null)
+                if (BienImmobilier.PhotosBase64 == null)
                 {
-                    ImageBase64 = new ObservableCollection<string> { Convert.ToBase64String(bitmapdata) };
+                    BienImmobilier.PhotosBase64 = new ObservableCollection<string> { Convert.ToBase64String(bitmapdata) };
                 }
                 else
                 {
-                    ImageBase64.Add(Convert.ToBase64String(bitmapdata));
+                    BienImmobilier.PhotosBase64.Add(Convert.ToBase64String(bitmapdata));
                 }
 
             }
@@ -235,6 +175,11 @@ namespace ClientWPF.ViewModel
             tmp[0] = targetWidth;
             tmp[1] = targetHeight;
             return tmp;
+        }
+
+        public void SetCurrentEntity(BienImmobilier entity)
+        {
+            BienImmobilier = entity;
         }
     }
 }

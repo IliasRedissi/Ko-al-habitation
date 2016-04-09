@@ -9,7 +9,7 @@
         xmlns:s="clr-namespace:ClientWPF.ServiceAgence"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="NewBien" Height="300" Width="400">
+        Title="Bien" Height="300" Width="400">
     <Window.DataContext>
         <vm:NewBienViewModel/>
     </Window.DataContext>
@@ -66,43 +66,37 @@
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Nom:"/>
-        <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding Title}"/>
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Prix: "/>
-        <TextBox Grid.Column="2" Grid.Row="2">
-            <TextBox.Text>
-                <Binding Path="MontantChargeMin" StringFormat="{}{0:0.00}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding BienImmobilier.Titre, Mode=TwoWay}"/>
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Prix:"/>
         <TextBox Grid.Column="2" Grid.Row="2">
             <TextBox.Text>
-                <Binding Path="Price" StringFormat="{}{0:N}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                <Binding Path="BienImmobilier.Prix" StringFormat="{}{0:N}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
             </TextBox.Text>
         </TextBox>
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Montant charges: "/>
         <TextBox Grid.Column="2" Grid.Row="3">
             <TextBox.Text>
-                <Binding Path="MontantCharge" StringFormat="{}{0:N}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                <Binding Path="BienImmobilier.MontantCharges" StringFormat="{}{0:N}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
             </TextBox.Text>
         </TextBox>
         <TextBlock Grid.Column="1" Grid.Row="4" Text="Code postal:"/>
         <TextBox Grid.Column="2" Grid.Row="4">
             <TextBox.Text>
-                <Binding Path="CodePostal" StringFormat="{}{0:0}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
+                <Binding Path="BienImmobilier.CodePostal" StringFormat="{}{0:0}" ValidatesOnDataErrors="False" Mode="TwoWay"/>
             </TextBox.Text>
         </TextBox>
         <TextBlock Grid.Column="1" Grid.Row="5" Text="Ville:"/>
-        <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding Ville}"/>
-        <Image x:Name="image" Grid.Column="4" Grid.Row="7" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="{Binding Image,Mode=TwoWay}"/>
-        <TextBlock Grid.Column="3" Grid.Row="5" Text="Adresse:" HorizontalAlignment="Right"/>
-        <TextBox Grid.Column="4" Grid.Row="5" Text="{Binding Adresse}"/>
+        <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding BienImmobilier.Ville, Mode=TwoWay}"/>
+        <Image x:Name="Image" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Source="{Binding Image,Mode=TwoWay}"/>
+		<TextBlock Grid.Column="3" Grid.Row="5" Text="Adresse:" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="4" Grid.Row="5" Text="{Binding BienImmobilier.Adresse, Mode=TwoWay}"/>
         <TextBlock Grid.Column="1" Grid.Row="6" Text="Description:"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Text="{Binding Description}" TextWrapping="Wrap" AcceptsReturn="True"/>
-        
-        <ComboBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TransactionTypeProvider} }" SelectedValue="{Binding SelectedTypeTransaction}"/>
-        <ComboBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TypeBienTypeProvider} }" SelectedValue="{Binding SelectedTypeBien}"/>
-        <ComboBox Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource EnergieChauffageTypeProvider} }" SelectedValue="{Binding SelectedEnergieChauffage}"/>
-        <ComboBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TypeChauffageTypeProvider} }" SelectedValue="{Binding SelectedTypeChauffage}"/>
+        <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Text="{Binding BienImmobilier.Description, Mode=TwoWay}" TextWrapping="Wrap" AcceptsReturn="True"/>		
+
+        <ComboBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TransactionTypeProvider} }" SelectedValue="{Binding BienImmobilier.TypeTransaction, Mode=TwoWay}"/>
+        <ComboBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TypeBienTypeProvider} }" SelectedValue="{Binding BienImmobilier.TypeBien, Mode=TwoWay}"/>
+        <ComboBox Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource EnergieChauffageTypeProvider} }" SelectedValue="{Binding BienImmobilier.EnergieChauffage, Mode=TwoWay}"/>
+        <ComboBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource TypeChauffageTypeProvider} }" SelectedValue="{Binding BienImmobilier.TypeChauffage, Mode=TwoWay}"/>
         <Button Grid.Column="1" Grid.Row="9" Content="Upload" Command="{Binding UploadCommand}"/>
         
         <Button Grid.Column="4" Grid.Row="9" Content="Ajouter" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=WindowNewBien}"/>

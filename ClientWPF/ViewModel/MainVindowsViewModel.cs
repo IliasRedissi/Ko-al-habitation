@@ -125,6 +125,11 @@ namespace ClientWPF.ViewModel
             get { return new BaseCommand(Suiv_OnClick); }
         }
 
+        public BaseCommand OnClicEditCommand
+        {
+            get { return new BaseCommand(OnClickEditBien);}
+        }
+
         public BaseCommand OnClickDeleteCommand
         {
             get { return new BaseCommand(Delete_OnClick);}
@@ -195,6 +200,19 @@ namespace ClientWPF.ViewModel
             }
             Charger();
         }
+
+        private void OnClickEditBien()
+        {
+            NewBien filter = new NewBien();
+            IEntityViewModel<BienImmobilier> vm = filter.DataContext as IEntityViewModel<BienImmobilier>;
+            vm.SetCurrentEntity(SelectedItem);
+            if (filter.ShowDialog() == true)
+            {
+                
+            }
+            Charger();
+        }
+
         private void MenuItem_OnClickRestartFilter()
         {
             Charger();
